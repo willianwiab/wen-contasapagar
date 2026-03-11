@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -277,7 +278,11 @@ tfoot td{background:#1e40af;color:white;font-weight:700;padding:13px 14px}
     <p id="headerSub">WEN Produtora</p>
   </div>
   <div class="header-right">
-    <select class="mes-select" id="mesSelect" onchange="trocarMes(this.value)"></select>
+    <div style="display:flex;align-items:center;gap:6px">
+      <button id="btnMesAnterior" onclick="navegarMes(-1)" style="background:rgba(255,255,255,.15);border:none;color:white;width:32px;height:32px;border-radius:8px;cursor:pointer;font-size:1.1rem;display:flex;align-items:center;justify-content:center;transition:background .2s" onmouseover="this.style.background='rgba(255,255,255,.3)'" onmouseout="this.style.background='rgba(255,255,255,.15)'">‹</button>
+      <span id="mesLabel" style="color:white;font-weight:700;font-size:1rem;min-width:110px;text-align:center;letter-spacing:.03em"></span>
+      <button id="btnMesProximo" onclick="navegarMes(1)" style="background:rgba(255,255,255,.15);border:none;color:white;width:32px;height:32px;border-radius:8px;cursor:pointer;font-size:1.1rem;display:flex;align-items:center;justify-content:center;transition:background .2s" onmouseover="this.style.background='rgba(255,255,255,.3)'" onmouseout="this.style.background='rgba(255,255,255,.15)'">›</button>
+    </div>
     <button class="btn btn-green" onclick="abrirModal()">+ Nova Conta</button>
     <button class="btn btn-white" onclick="exportarExcel()">⬇ Excel</button>
   </div>
@@ -682,13 +687,13 @@ Object.keys(meses).forEach(m=>{meses[m].forEach(r=>{
 (function autoMes(){
   const ma=mesAtualReal();
   if(!meses[ma]){
-    const keys=Object.keys(meses).sort();
+    const keys=getMesesOrdenados();
     meses[ma]=(meses[keys[keys.length-1]]||[]).map(r=>({...r,id:'w'+Date.now()+Math.floor(Math.random()*9999),status:'PENDENTE',valorPago:0}));
     salvarStorage();
   }
 })();
 
-let mesAtual=(()=>{const ma=mesAtualReal();return meses[ma]?ma:Object.keys(meses).sort().reverse()[0];})();
+let mesAtual=(()=>{const ma=mesAtualReal();return meses[ma]?ma:getMesesOrdenados().reverse()[0];})();
 let filtroAtual='TODOS',editandoId=null,editandoMes=null,pieObj=null,barObj=null,lineObj=null;
 let pendingEdit=null;
 let periodoMode='dias';
@@ -713,15 +718,9 @@ let catChartObj=null;
 let baixaId=null;
 
 // ===== FIREBASE FIRESTORE SYNC =====
-const FIREBASE_CONFIG = {
-  apiKey: "AIzaSyC7hYN3__Q_4MNAu6VCTXbTdvVSW37IneI",
-  authDomain: "wencontasapagar.firebaseapp.com",
-  projectId: "wencontasapagar",
-  storageBucket: "wencontasapagar.firebasestorage.app",
-  messagingSenderId: "53327991168",
-  appId: "1:53327991168:web:8330731b6918c146253165"
-};
-const FIRESTORE_URL = `https://firestore.googleapis.com/v1/projects/${FIREBASE_CONFIG.projectId}/databases/(default)/documents`;
+const FB_PROJECT = 'wencontasapagar';
+const FB_API_KEY = 'AIzaSyC7hYN3__Q_4MNAu6VCTXbTdvVSW37IneI';
+const FIRESTORE_URL = `https://firestore.googleapis.com/v1/projects/${FB_PROJECT}/databases/(default)/documents`;
 
 let syncTimeout = null;
 let syncStatus = 'idle';
@@ -731,39 +730,53 @@ let syncPendente = false;
 function salvarStorage(){
   localStorage.setItem('wen_meses6', JSON.stringify(meses));
   clearTimeout(syncTimeout);
-  syncTimeout = setTimeout(syncToSheets, 1500); // Firestore é rápido, 1.5s basta
+  syncTimeout = setTimeout(syncToSheets, 1500);
 }
 
-// Converte valor JS → campo Firestore
-function toFirestoreValue(v){
-  if(v===null||v===undefined) return {nullValue:null};
-  if(typeof v==='boolean') return {booleanValue:v};
-  if(typeof v==='number') return {doubleValue:v};
-  if(typeof v==='string') return {stringValue:v};
-  if(Array.isArray(v)) return {arrayValue:{values:v.map(toFirestoreValue)}};
-  if(typeof v==='object'){
-    const fields={};
-    Object.keys(v).forEach(k=>fields[k]=toFirestoreValue(v[k]));
-    return {mapValue:{fields}};
-  }
-  return {stringValue:String(v)};
+// Converte valor JS → Firestore
+function toFV(v){
+  if(v===null||v===undefined)return{nullValue:null};
+  if(typeof v==='boolean')return{booleanValue:v};
+  if(typeof v==='number')return{doubleValue:v};
+  if(typeof v==='string')return{stringValue:v};
+  if(Array.isArray(v))return{arrayValue:{values:v.map(toFV)}};
+  if(typeof v==='object'){const f={};Object.keys(v).forEach(k=>f[k]=toFV(v[k]));return{mapValue:{fields:f}};}
+  return{stringValue:String(v)};
 }
-
-// Converte campo Firestore → valor JS
-function fromFirestoreValue(fv){
-  if(!fv) return null;
-  if('nullValue' in fv) return null;
-  if('booleanValue' in fv) return fv.booleanValue;
-  if('integerValue' in fv) return Number(fv.integerValue);
-  if('doubleValue' in fv) return fv.doubleValue;
-  if('stringValue' in fv) return fv.stringValue;
-  if('arrayValue' in fv) return (fv.arrayValue.values||[]).map(fromFirestoreValue);
-  if('mapValue' in fv){
-    const obj={};
-    Object.keys(fv.mapValue.fields||{}).forEach(k=>obj[k]=fromFirestoreValue(fv.mapValue.fields[k]));
-    return obj;
-  }
+// Converte Firestore → JS
+function fromFV(fv){
+  if(!fv)return null;
+  if('nullValue' in fv)return null;
+  if('booleanValue' in fv)return fv.booleanValue;
+  if('integerValue' in fv)return Number(fv.integerValue);
+  if('doubleValue' in fv)return fv.doubleValue;
+  if('stringValue' in fv)return fv.stringValue;
+  if('arrayValue' in fv)return(fv.arrayValue.values||[]).map(fromFV);
+  if('mapValue' in fv){const o={};Object.keys(fv.mapValue.fields||{}).forEach(k=>o[k]=fromFV(fv.mapValue.fields[k]));return o;}
   return null;
+}
+
+// ===== CADERNINHO — resumo_mensal para o CRM ler =====
+async function atualizarCaderninho(){
+  try {
+    const resumo = {};
+    Object.keys(meses).forEach(m => {
+      const data = meses[m] || [];
+      const total = data.reduce((a,r)=>a+r.valor,0);
+      const pago = data.filter(r=>r.status.toUpperCase()==='PAGO').reduce((a,r)=>a+r.valor,0);
+      const pendente = total - pago;
+      const qtd = data.length;
+      const qtdPago = data.filter(r=>r.status.toUpperCase()==='PAGO').length;
+      resumo[m] = { total, pago, pendente, qtd, qtdPago };
+    });
+    const fields = { resumo: toFV(resumo), atualizadoEm: { stringValue: new Date().toISOString() } };
+    const url = `${FIRESTORE_URL}/resumo_mensal/contas_pagar?key=${FB_API_KEY}`;
+    await fetch(url, {
+      method: 'PATCH',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({ fields })
+    });
+  } catch(e){ console.warn('Caderninho erro:', e.message); }
 }
 
 async function syncToSheets(){
@@ -771,10 +784,9 @@ async function syncToSheets(){
   syncEmAndamento=true; syncPendente=false;
   setSyncStatus('saving');
   try {
-    // Salva cada mês como documento separado no Firestore
     const promises = Object.keys(meses).map(async mes => {
-      const fields = { contas: toFirestoreValue(meses[mes]), mes: {stringValue: mes} };
-      const url = `${FIRESTORE_URL}/meses/${encodeURIComponent(mes)}?key=${FIREBASE_CONFIG.apiKey}`;
+      const fields = { contas: toFV(meses[mes]), mes: {stringValue: mes} };
+      const url = `${FIRESTORE_URL}/meses/${encodeURIComponent(mes)}?key=${FB_API_KEY}`;
       await fetch(url, {
         method: 'PATCH',
         headers: {'Content-Type':'application/json'},
@@ -782,6 +794,8 @@ async function syncToSheets(){
       });
     });
     await Promise.all(promises);
+    // Atualiza o caderninho junto com o sync
+    await atualizarCaderninho();
     setSyncStatus('ok');
   } catch(e){
     setSyncStatus('error', e.message);
@@ -794,7 +808,7 @@ async function syncToSheets(){
 async function carregarDoSheets(){
   setSyncStatus('saving');
   try {
-    const url = `${FIRESTORE_URL}/meses?key=${FIREBASE_CONFIG.apiKey}`;
+    const url = `${FIRESTORE_URL}/meses?key=${FB_API_KEY}`;
     const res = await fetch(url);
     const json = await res.json();
     if(!json.documents || json.documents.length===0){ setSyncStatus('ok'); return false; }
@@ -803,8 +817,7 @@ async function carregarDoSheets(){
       const fields = doc.fields || {};
       const mes = fields.mes?.stringValue;
       if(!mes) return;
-      const contas = fromFirestoreValue(fields.contas) || [];
-      // Normalizar campos
+      const contas = fromFV(fields.contas) || [];
       contas.forEach(r => {
         if(r.valorPago===undefined) r.valorPago = r.status==='PAGO' ? r.valor : 0;
         if(r.fixa===undefined) r.fixa = false;
@@ -837,6 +850,29 @@ function setSyncStatus(status, msg){
   el.textContent = icons[status] + (msg ? ' ' + msg.slice(0,40) : '');
   el.style.color = colors[status];
 }
+
+async function sincronizarAgora(){
+  toast('⏳ Sincronizando com Firebase...');
+  const ok = await carregarDoSheets();
+  if(ok){
+    atualizarNavMes(); renderDashboard(); renderTabela(); renderHistorico();
+    toast('✅ Dados atualizados do Firebase!');
+  } else {
+    await syncToSheets();
+    toast('✅ Dados enviados ao Firebase!');
+  }
+}
+// Ordenação cronológica correta dos meses (FEV/2026, MAR/2026...)
+const MESES_IDX = {JAN:0,FEV:1,MAR:2,ABR:3,MAI:4,JUN:5,JUL:6,AGO:7,SET:8,OUT:9,NOV:10,DEZ:11};
+function sortMeses(keys){
+  return [...keys].sort((a,b)=>{
+    const [ma,ya]=a.split('/'); const [mb,yb]=b.split('/');
+    if(ya!==yb) return parseInt(ya)-parseInt(yb);
+    return (MESES_IDX[ma]??0)-(MESES_IDX[mb]??0);
+  });
+}
+function getMesesOrdenados(){ return sortMeses(Object.keys(meses)); }
+
 function getData(){return meses[mesAtual]||[];}
 const fmt=v=>'R$ '+Number(v||0).toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2});
 function getDia(){return new Date().getDate();}
@@ -853,11 +889,11 @@ function toast(msg){const t=document.getElementById('toast');t.textContent=msg;t
 
 // ===== PROPAGAÇÃO =====
 function getMesesFuturos(){
-  const keys=Object.keys(meses).sort();
+  const keys=getMesesOrdenados();
   return keys.filter(m=>m>mesAtual);
 }
 function getMesesPassados(){
-  const keys=Object.keys(meses).sort();
+  const keys=getMesesOrdenados();
   return keys.filter(m=>m<mesAtual);
 }
 
@@ -925,10 +961,16 @@ function confirmarExcluir(){
     toast('🗑️ Removida deste mês!');
   } else if(opcao==='futuros'){
     meses[m]=(meses[m]||[]).filter(r=>String(r.id)!==String(id));
-    getMesesFuturos().forEach(ms=>{meses[ms]=(meses[ms]||[]).filter(r=>r.nome!==nome);});
+    const keys=getMesesOrdenados();
+    keys.filter(k=>k>m).forEach(ms=>{
+      meses[ms]=(meses[ms]||[]).filter(r=>r.nome!==nome);
+    });
     toast('🗑️ Removida deste mês e dos próximos!');
   } else {
-    Object.keys(meses).forEach(ms=>{meses[ms]=(meses[ms]||[]).filter(r=>r.nome!==nome);});
+    // Todos os meses — remove por nome em TODOS (passados e futuros)
+    Object.keys(meses).forEach(ms=>{
+      meses[ms]=(meses[ms]||[]).filter(r=>r.nome!==nome);
+    });
     toast('🗑️ Removida de todos os meses!');
   }
   pendingExcluir=null;salvarStorage();renderTabela();renderDashboard();
@@ -948,16 +990,30 @@ function showPage(p,btn){
 }
 
 function renderMesSelect(){
-  const sel=document.getElementById('mesSelect');sel.innerHTML='';
-  Object.keys(meses).sort().forEach(m=>{
-    const o=document.createElement('option');o.value=m;o.textContent=m;
-    if(m===mesAtual)o.selected=true;sel.appendChild(o);
-  });
+  atualizarNavMes();
+}
+function atualizarNavMes(){
+  const keys=getMesesOrdenados();
+  const idx=keys.indexOf(mesAtual);
+  document.getElementById('mesLabel').textContent=mesAtual;
   document.getElementById('headerSub').textContent='WEN Produtora — '+mesAtual;
+  const btnAnt=document.getElementById('btnMesAnterior');
+  const btnProx=document.getElementById('btnMesProximo');
+  if(btnAnt) btnAnt.style.opacity=idx<=0?'0.3':'1';
+  if(btnProx) btnProx.style.opacity=idx>=keys.length-1?'0.3':'1';
+}
+function navegarMes(dir){
+  const keys=getMesesOrdenados();
+  const idx=keys.indexOf(mesAtual);
+  const novo=idx+dir;
+  if(novo<0||novo>=keys.length)return;
+  mesAtual=keys[novo];
+  atualizarNavMes();
+  renderDashboard();renderTabela();
 }
 function trocarMes(m){
   mesAtual=m;
-  document.getElementById('headerSub').textContent='WEN Produtora — '+mesAtual;
+  atualizarNavMes();
   renderDashboard();renderTabela();
 }
 
@@ -978,7 +1034,7 @@ function renderPeriodoSelects(){
   ['pMes','pMesTodos'].forEach(sid=>{
     const sel=document.getElementById(sid);if(!sel)return;
     sel.innerHTML='';
-    Object.keys(meses).sort().forEach(m=>{
+    getMesesOrdenados().forEach(m=>{
       const o=document.createElement('option');o.value=m;o.textContent=m;
       if(m===mesAtual)o.selected=true;sel.appendChild(o);
     });
@@ -1006,7 +1062,7 @@ function calcPeriodoDatas(){
   const dIni=new Date(ini);const dFim=new Date(fim);
   // Collect from all months in range
   const allItems=[];
-  Object.keys(meses).sort().forEach(m=>{
+  getMesesOrdenados().forEach(m=>{
     // Parse month from label e.g. FEV/2026
     const [ms,yr]=m.split('/');
     const mIdx=["JAN","FEV","MAR","ABR","MAI","JUN","JUL","AGO","SET","OUT","NOV","DEZ"].indexOf(ms);
@@ -1256,7 +1312,7 @@ function renderDashboard(){
 }
 
 function renderComparativo(){
-  const mesesOrdenados=Object.keys(meses).sort();
+  const mesesOrdenados=getMesesOrdenados();
   const labels=mesesOrdenados;
   const totais=mesesOrdenados.map(m=>meses[m].reduce((a,r)=>a+r.valor,0));
   const pagos=mesesOrdenados.map(m=>meses[m].filter(r=>r.status.toUpperCase()==='PAGO').reduce((a,r)=>a+r.valor,0));
@@ -1300,9 +1356,9 @@ function setFiltro(f,btn){
     selMes.style.display='block';
     // Popular seletor com meses que têm vencidos
     const hoje=getDia();
-    const mesAtualIdx=Object.keys(meses).sort().indexOf(mesAtual);
+    const mesAtualIdx=getMesesOrdenados().indexOf(mesAtual);
     selMes.innerHTML='<option value="TODOS_MESES">📅 Todos os meses</option>';
-    Object.keys(meses).sort().forEach(m=>{
+    getMesesOrdenados().forEach(m=>{
       const temVencido=meses[m].some(r=>r.status.toUpperCase()!=='PAGO'&&r.dia&&r.dia<hoje);
       if(temVencido){
         const o=document.createElement('option');
@@ -1330,7 +1386,7 @@ function renderTabela(){
     // Busca em todos os meses ou no mês filtrado
     const mesesBuscar=mesFiltro&&mesFiltro!=='TODOS_MESES'
       ?[mesFiltro]
-      :Object.keys(meses).sort();
+      :getMesesOrdenados();
 
     mesesBuscar.forEach(m=>{
       (meses[m]||[]).forEach(r=>{
@@ -1343,7 +1399,7 @@ function renderTabela(){
     });
 
     // Ordenar: mês mais antigo primeiro, depois por dia
-    const mIdxMap={};Object.keys(meses).sort().forEach((m,i)=>mIdxMap[m]=i);
+    const mIdxMap={};getMesesOrdenados().forEach((m,i)=>mIdxMap[m]=i);
     data.sort((a,b)=>mIdxMap[a._mes]-mIdxMap[b._mes]||a.dia-b.dia);
 
     // Banner
@@ -1465,7 +1521,7 @@ function previewCategoria(){
   el.innerHTML=`<span style="background:${ci.bg};color:${ci.color};padding:3px 10px;border-radius:20px;font-weight:700">${ci.icon} ${ci.label}</span>`;
 }
 function renderMesesCheck(){
-  document.getElementById('mesesCheck').innerHTML=Object.keys(meses).sort().map(m=>{
+  document.getElementById('mesesCheck').innerHTML=getMesesOrdenados().map(m=>{
     const checked=m===mesAtual;
     return `<label class="${checked?'checked':''}"><input type="checkbox" value="${m}" ${checked?'checked':''} onchange="this.parentElement.classList.toggle('checked',this.checked)"/>${m}</label>`;
   }).join('');
@@ -1540,7 +1596,7 @@ function editarConta(id){abrirModal(id);}
 
 // ===== HISTÓRICO =====
 function renderHistorico(){
-  document.getElementById('histList').innerHTML=Object.keys(meses).sort().reverse().map(m=>{
+  document.getElementById('histList').innerHTML=getMesesOrdenados().reverse().map(m=>{
     const data=meses[m];const total=data.reduce((a,r)=>a+r.valor,0);
     const pago=data.filter(r=>r.status.toUpperCase()==='PAGO').reduce((a,r)=>a+r.valor,0);
     const pct=total>0?Math.round(pago/total*100):0;const atual=m===mesAtualReal();
@@ -1565,7 +1621,7 @@ function exportarMes(m){
 }
 function exportarTodosExcel(){
   const wb=XLSX.utils.book_new();
-  Object.keys(meses).sort().forEach(m=>{
+  getMesesOrdenados().forEach(m=>{
     const data=meses[m].slice().sort((a,b)=>(a.dia||99)-(b.dia||99));
     const ws_data=[['CONTAS A PAGAR — '+m+' — WEN PRODUTORA'],[],['Descrição','Dia Venc.','Valor (R$)','Já Pago','Saldo','Status','Observação','Código/Acesso'],...data.map(r=>[r.nome,r.dia||'',r.valor,r.valorPago||0,(r.valor-(r.valorPago||0)),r.status.toUpperCase()==='PAGO'?'PAGO':'PENDENTE',r.obs,r.cod]),[],['TOTAL','',data.reduce((a,r)=>a+r.valor,0),'','','','','']];
     const ws=XLSX.utils.aoa_to_sheet(ws_data);ws['!cols']=[{wch:40},{wch:12},{wch:14},{wch:14},{wch:14},{wch:12},{wch:40},{wch:50}];
@@ -1578,7 +1634,7 @@ function exportarTodosExcel(){
 function renderCatMesFiltro(){
   const sel=document.getElementById('catMesFiltro');
   sel.innerHTML='<option value="TODOS_MESES">📅 Todos os meses</option>';
-  Object.keys(meses).sort().forEach(m=>{
+  getMesesOrdenados().forEach(m=>{
     const o=document.createElement('option');o.value=m;o.textContent=m;
     if(m===mesAtual)o.selected=true;sel.appendChild(o);
   });
@@ -1681,7 +1737,7 @@ function importarBackup(event){
         if(r.categoria===undefined)r.categoria='';
       });});
       localStorage.setItem('wen_meses6', JSON.stringify(meses));
-      renderMesSelect();renderDashboard();renderHistorico();
+      atualizarNavMes();renderDashboard();renderHistorico();
       toast('⏳ Importado localmente. Sincronizando com Firebase...');
       // Força sync imediato
       await syncToSheets();
@@ -1692,26 +1748,13 @@ function importarBackup(event){
   event.target.value='';
 }
 
-async function sincronizarAgora(){
-  toast('⏳ Sincronizando com Firebase...');
-  const ok = await carregarDoSheets();
-  if(ok){
-    renderMesSelect(); renderDashboard(); renderTabela(); renderHistorico();
-    toast('✅ Dados atualizados do Firebase!');
-  } else {
-    await syncToSheets();
-    toast('✅ Dados enviados ao Firebase!');
-  }
-}
-
 // ===== COPIAR MÊS =====
 function abrirCopiarMes(){
-  const keys=Object.keys(meses).sort();
+  const keys=getMesesOrdenados();
   ['copiarDe','copiarPara'].forEach((sid,i)=>{
     const sel=document.getElementById(sid);sel.innerHTML='';
     keys.forEach((m,j)=>{
       const o=document.createElement('option');o.value=m;o.textContent=m;
-      // De = mes atual, Para = próximo mês disponível
       if(i===0&&m===mesAtual)o.selected=true;
       if(i===1){const idx=keys.indexOf(mesAtual);if(j===Math.min(idx+1,keys.length-1))o.selected=true;}
       sel.appendChild(o);
@@ -1752,14 +1795,16 @@ renderDashboard();
   document.getElementById('syncIndicator').textContent = '⏳ Carregando do Firebase...';
   const ok = await carregarDoSheets();
   if(ok){
-    renderMesSelect(); renderDashboard(); renderTabela();
+    atualizarNavMes(); renderDashboard(); renderTabela();
     toast('☁️ Dados carregados do Firebase!');
   } else {
-    // Firebase vazio — envia dados locais para a nuvem
     await syncToSheets();
     toast('✅ Dados enviados ao Firebase!');
   }
 })();
+</script>
+</body>
+</html>
 </script>
 </body>
 </html>
