@@ -268,6 +268,99 @@ tfoot td{background:#1e40af;color:white;font-weight:700;padding:13px 14px}
 
 /* BADGE CATEGORIA na tabela */
 .badge.cat{font-size:.7rem;padding:2px 7px}
+
+/* ORDENAÇÃO DE COLUNAS */
+thead th.sortable{cursor:pointer;user-select:none;transition:background .15s}
+thead th.sortable:hover{background:#2563eb}
+thead th.sort-asc::after{content:' ▲';font-size:.7rem}
+thead th.sort-desc::after{content:' ▼';font-size:.7rem}
+
+/* FILTRO CATEGORIA NA TABELA */
+.table-toolbar .cat-filter-wrap{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.cat-filter-btn{padding:5px 12px;border-radius:20px;border:1px solid #e5e7eb;background:white;cursor:pointer;font-size:.78rem;font-weight:500;color:#6b7280;transition:all .2s;white-space:nowrap}
+.cat-filter-btn.active{background:#1e40af;color:white;border-color:#1e40af}
+
+/* FILTRO FAIXA VALOR */
+.range-filter{display:flex;align-items:center;gap:6px;font-size:.82rem;color:#6b7280}
+.range-filter input{width:90px;border:1px solid #e5e7eb;border-radius:6px;padding:5px 8px;font-size:.82rem;outline:none}
+.range-filter input:focus{border-color:#3b82f6}
+
+/* DIAS EM ATRASO */
+.dias-atraso{font-size:.7rem;background:#fee2e2;color:#991b1b;padding:2px 7px;border-radius:20px;font-weight:700;margin-left:4px}
+
+/* TOOLTIP */
+.tooltip-wrap{position:relative;display:inline-block}
+.tooltip-cod{display:none;position:absolute;left:50%;transform:translateX(-50%);bottom:calc(100% + 6px);background:#1e293b;color:white;padding:8px 12px;border-radius:8px;font-size:.78rem;white-space:pre;z-index:50;min-width:160px;max-width:280px;box-shadow:0 4px 12px rgba(0,0,0,.3);line-height:1.5;word-break:break-all;white-space:normal}
+.tooltip-cod::after{content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);border:5px solid transparent;border-top-color:#1e293b}
+.tooltip-wrap:hover .tooltip-cod{display:block}
+
+/* CALENDÁRIO */
+.cal-wrap{background:white;border-radius:14px;padding:20px;box-shadow:0 1px 4px rgba(0,0,0,.07);margin-bottom:24px}
+.cal-wrap h3{font-size:.85rem;text-transform:uppercase;color:#6b7280;font-weight:600;margin-bottom:16px;letter-spacing:.05em}
+.cal-header{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;margin-bottom:4px}
+.cal-header span{text-align:center;font-size:.72rem;font-weight:700;color:#9ca3af;text-transform:uppercase;padding:4px 0}
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px}
+.cal-day{min-height:56px;border:1px solid #f1f5f9;border-radius:8px;padding:4px 6px;font-size:.78rem;cursor:default;transition:all .2s;position:relative}
+.cal-day.empty{background:transparent;border-color:transparent}
+.cal-day.has-contas{background:#eff6ff;border-color:#bfdbfe;cursor:pointer}
+.cal-day.has-contas:hover{background:#dbeafe;border-color:#93c5fd}
+.cal-day.has-vencido{background:#fef2f2;border-color:#fecaca}
+.cal-day.has-vencido:hover{background:#fee2e2}
+.cal-day.today{border-color:#6366f1;box-shadow:0 0 0 2px #818cf8}
+.cal-day.all-pago{background:#f0fdf4;border-color:#bbf7d0}
+.cal-day-num{font-weight:700;color:#374151;font-size:.82rem}
+.cal-day.today .cal-day-num{color:#4f46e5}
+.cal-dots{display:flex;gap:2px;flex-wrap:wrap;margin-top:3px}
+.cal-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
+.cal-day-val{font-size:.65rem;color:#6b7280;margin-top:2px;font-weight:600}
+
+/* RESUMO SEMANAL */
+.semana-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin-bottom:24px}
+.semana-card{background:white;border-radius:12px;padding:14px;box-shadow:0 1px 4px rgba(0,0,0,.07);border-left:4px solid #6366f1}
+.semana-card label{font-size:.72rem;text-transform:uppercase;color:#6b7280;font-weight:600}
+.semana-card .sw-val{font-size:1.1rem;font-weight:700;color:#4f46e5;margin-top:4px}
+.semana-card .sw-sub{font-size:.75rem;color:#6b7280;margin-top:2px}
+
+/* TOP 5 */
+.top5-wrap{background:white;border-radius:14px;padding:20px;box-shadow:0 1px 4px rgba(0,0,0,.07);margin-bottom:20px}
+.top5-wrap h3{font-size:.85rem;text-transform:uppercase;color:#6b7280;font-weight:600;margin-bottom:14px;letter-spacing:.05em}
+.top5-item{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f1f5f9}
+.top5-item:last-child{border-bottom:none}
+.top5-rank{font-size:.78rem;font-weight:700;color:#9ca3af;width:20px;text-align:center;flex-shrink:0}
+.top5-nome{flex:1;font-size:.88rem;color:#374151;font-weight:500;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.top5-val{font-weight:700;font-size:.88rem;white-space:nowrap}
+
+/* COMPARATIVO CATEGORIA */
+.cat-compare-wrap{background:white;border-radius:14px;padding:20px;box-shadow:0 1px 4px rgba(0,0,0,.07);margin-bottom:20px}
+.cat-compare-wrap h3{font-size:.85rem;text-transform:uppercase;color:#6b7280;font-weight:600;margin-bottom:14px}
+.cat-compare-row{display:flex;align-items:center;gap:10px;margin-bottom:10px;font-size:.82rem}
+.cat-compare-row:last-child{margin-bottom:0}
+.cat-compare-label{width:120px;font-weight:500;color:#374151;flex-shrink:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cat-compare-bar-wrap{flex:1;display:flex;gap:4px;align-items:center}
+.cat-compare-bar{height:10px;border-radius:99px;transition:width .5s;min-width:2px}
+.cat-compare-vals{font-size:.72rem;color:#6b7280;white-space:nowrap;width:120px;text-align:right}
+.cat-compare-trend{font-size:.78rem;font-weight:700;width:40px;text-align:right}
+
+/* PRINT */
+@media print{
+  .header,.nav,.action-bar,.table-toolbar,.hist-actions,.backup-section,.btn,.modal-bg,.confirm-bg,.toast,#alertasDiv,.charts,.charts3,.progress-wrap,.cards-row2,#hojeBoxDiv,.cal-wrap,.semana-grid{display:none!important}
+  .page{display:block!important}
+  .container{padding:0}
+  body{background:white}
+  .table-wrap{box-shadow:none;border:1px solid #e5e7eb}
+  .print-header{display:block!important}
+}
+.print-header{display:none;text-align:center;margin-bottom:16px}
+.print-header h2{font-size:1.2rem;font-weight:700}
+.print-header p{font-size:.85rem;color:#6b7280}
+
+/* RESUMO EXECUTIVO */
+.resumo-exec{background:linear-gradient(135deg,#1e3a8a,#1e40af);color:white;border-radius:14px;padding:24px;margin-bottom:24px}
+.resumo-exec h3{font-size:1rem;font-weight:700;margin-bottom:16px;opacity:.9}
+.resumo-exec-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px}
+.resumo-exec-item{background:rgba(255,255,255,.12);border-radius:10px;padding:12px}
+.resumo-exec-item label{font-size:.7rem;text-transform:uppercase;opacity:.7;letter-spacing:.05em}
+.resumo-exec-item .rev{font-size:1.1rem;font-weight:700;margin-top:4px}
 </style>
 </head>
 <body>
@@ -285,7 +378,12 @@ tfoot td{background:#1e40af;color:white;font-weight:700;padding:13px 14px}
     </div>
     <button class="btn btn-green" onclick="abrirModal()">+ Nova Conta</button>
     <button class="btn btn-white" onclick="exportarExcel()">⬇ Excel</button>
+    <button class="btn btn-white" onclick="imprimirMes()">🖨️ Imprimir</button>
   </div>
+</div>
+<div class="print-header" id="printHeader">
+  <h2>Contas a Pagar — WEN Produtora</h2>
+  <p id="printSubtitle"></p>
 </div>
 
 <div style="background:#1e3a5f;padding:4px 20px;display:flex;justify-content:flex-end;align-items:center;font-size:.75rem;gap:12px">
@@ -304,9 +402,11 @@ tfoot td{background:#1e40af;color:white;font-weight:700;padding:13px 14px}
 <div class="container">
   <!-- DASHBOARD -->
   <div class="page active" id="page-dashboard">
+    <div id="resumoExecDiv"></div>
     <div class="cards" id="cards"></div>
     <div class="cards-row2" id="cardsRow2"></div>
     <div id="hojeBoxDiv"></div>
+    <div class="semana-grid" id="semanaGrid"></div>
     <div class="progress-wrap">
       <h3>Progresso de Pagamento</h3>
       <div class="progress-bar-bg"><div class="progress-bar" id="progressBar" style="width:0%"></div></div>
@@ -323,6 +423,10 @@ tfoot td{background:#1e40af;color:white;font-weight:700;padding:13px 14px}
         <div class="ch-sub">Total a pagar vs total pago por mês</div>
         <canvas id="lineChart" style="max-height:220px"></canvas>
       </div>
+    </div>
+    <div class="cal-wrap" id="calWrap">
+      <h3>📅 Calendário do Mês</h3>
+      <div id="calGrid"></div>
     </div>
   </div>
 
@@ -386,6 +490,19 @@ tfoot td{background:#1e40af;color:white;font-weight:700;padding:13px 14px}
         <select id="mesFiltroContas" onchange="renderTabela()" style="border:1px solid #e5e7eb;border-radius:8px;padding:7px 12px;font-size:.88rem;outline:none;color:#374151;display:none">
           <option value="TODOS_MESES">📅 Todos os meses</option>
         </select>
+        <select id="catFiltroTabela" onchange="renderTabela()" style="border:1px solid #e5e7eb;border-radius:8px;padding:7px 12px;font-size:.88rem;outline:none;color:#374151">
+          <option value="">🏷️ Todas categorias</option>
+        </select>
+      </div>
+      <div style="padding:8px 20px;display:flex;align-items:center;gap:12px;flex-wrap:wrap;border-bottom:1px solid #f1f5f9;font-size:.82rem;color:#6b7280;background:#fafafa">
+        <span>💰 Faixa de valor:</span>
+        <div class="range-filter">
+          <span>De R$</span>
+          <input type="number" id="filtroMin" placeholder="0" min="0" oninput="renderTabela()"/>
+          <span>até R$</span>
+          <input type="number" id="filtroMax" placeholder="sem limite" min="0" oninput="renderTabela()"/>
+        </div>
+        <button onclick="limparFiltrosExtras()" style="padding:4px 10px;border:1px solid #e5e7eb;border-radius:6px;background:white;cursor:pointer;font-size:.78rem;color:#6b7280">✕ Limpar filtros</button>
       </div>
       <div id="vencidoBanner">
         🔴 <b>Modo Vencidos — todos os meses:</b> mostrando contas em atraso de <span id="vencidoContagem" style="font-weight:700"></span>. Use o seletor ao lado para filtrar por mês.
@@ -400,11 +517,22 @@ tfoot td{background:#1e40af;color:white;font-weight:700;padding:13px 14px}
       <select id="catMesFiltro" onchange="renderCategorias()">
         <option value="TODOS_MESES">📅 Todos os meses</option>
       </select>
+      <select id="catMesComp" onchange="renderCategorias()" style="border:1px solid #e5e7eb;border-radius:8px;padding:8px 12px;font-size:.9rem;outline:none">
+        <option value="">📊 Comparar com mês...</option>
+      </select>
       <select id="catOrdem" onchange="renderCategorias()">
         <option value="total">Ordenar por: Maior valor</option>
         <option value="nome">Ordenar por: Nome</option>
         <option value="qtd">Ordenar por: Qtd de contas</option>
       </select>
+    </div>
+    <div class="top5-wrap" id="top5Wrap">
+      <h3>🏆 Top 5 — Maiores Contas do Mês</h3>
+      <div id="top5List"></div>
+    </div>
+    <div class="cat-compare-wrap" id="catCompareWrap" style="display:none">
+      <h3 id="catCompareTitle">📊 Comparativo por Categoria</h3>
+      <div id="catCompareList"></div>
     </div>
     <div class="cat-chart-wrap">
       <h3>📊 Distribuição por Categoria</h3>
@@ -503,7 +631,7 @@ tfoot td{background:#1e40af;color:white;font-weight:700;padding:13px 14px}
       <label class="prop-opcao selected" onclick="selecionarPropOpcao(this,'somente')">
         <input type="radio" name="propOp" value="somente" checked/>
         <div class="po-info">
-          <div class="po-titulo">Só este mês (${mesAtualLabel})</div>
+          <div class="po-titulo">Só este mês</div>
           <div class="po-desc">Os outros meses continuam com os valores anteriores.</div>
         </div>
       </label>
@@ -627,42 +755,10 @@ tfoot td{background:#1e40af;color:white;font-weight:700;padding:13px 14px}
 <div class="toast" id="toast"></div>
 
 <script>
-const dadosFev26=[
-  {id:1,nome:"ESCOLA SOPHIA",dia:1,valor:0,status:"PAGO",obs:"",cod:"",valorPago:0,fixa:true},
-  {id:2,nome:"ALUGUEL STUDIO A SALA 154",dia:5,valor:3800,status:"PAGO",obs:"BERNARDO DORF",cod:"",valorPago:3800,fixa:true},
-  {id:3,nome:"CONDOMINIO STUDIO 181/182",dia:5,valor:3438.42,status:"PAGO",obs:"NO EMAIL WEN PRODUTORA Hubert SENHA 037881",cod:"237933930890011551349320056000005299520000260733",valorPago:3438.42,fixa:true},
-  {id:4,nome:"CONDOMINIO STUDIO 154",dia:5,valor:1779.43,status:"PAGO",obs:"NO EMAIL WEN PRODUTORA Hubert SENHA 003943",cod:"",valorPago:1779.43,fixa:true},
-  {id:5,nome:"ANTONIO BOTELHO",dia:5,valor:3200,status:"PAGO",obs:"",cod:"",valorPago:3200,fixa:true},
-  {id:6,nome:"AJUDA BOTELHO",dia:5,valor:300,status:"PAGO",obs:"",cod:"",valorPago:300,fixa:true},
-  {id:7,nome:"RAUL DÓRIA",dia:5,valor:4000,status:"PAGO",obs:"",cod:"",valorPago:4000,fixa:true},
-  {id:8,nome:"RAUL AJUDA",dia:5,valor:500,status:"PAGO",obs:"",cod:"",valorPago:500,fixa:true},
-  {id:9,nome:"TRAFEGO PAGO",dia:5,valor:1997,status:"PAGO",obs:"",cod:"",valorPago:1997,fixa:true},
-  {id:10,nome:"GABRIELLA MARTINS",dia:5,valor:1500,status:"PAGO",obs:"",cod:"",valorPago:1500,fixa:true},
-  {id:11,nome:"ENRICO",dia:5,valor:2100,status:"PAGO",obs:"",cod:"",valorPago:2100,fixa:true},
-  {id:12,nome:"MICHAEL",dia:5,valor:780,status:"PAGO",obs:"",cod:"",valorPago:780,fixa:true},
-  {id:13,nome:"RETIRADA (1)",dia:null,valor:3500,status:"PAGO",obs:"",cod:"",valorPago:3500,fixa:false},
-  {id:14,nome:"ALUGUEL STUDIO B SALA 181/182",dia:5,valor:0,status:"PENDENTE",obs:"",cod:"",valorPago:0,fixa:true},
-  {id:15,nome:"ENEL STUDIO A - SALA 154",dia:5,valor:555,status:"PENDENTE",obs:"PEGAR COM A GABI SEGUNDA VIA",cod:"enel gabriella.wencriacoes@gmail.com - senha Eutuv610@",valorPago:0,fixa:true},
-  {id:16,nome:"CHEIRO BOM",dia:10,valor:182,status:"PENDENTE",obs:"NO EMAIL WEN PRODUTORA",cod:"",valorPago:0,fixa:true},
-  {id:17,nome:"VIVO STUDIO A (CPF GABI)",dia:10,valor:153.64,status:"PENDENTE",obs:"NO EMAIL WEN PRODUTORA",cod:"cód. cliente 00000167684640 (100291)",valorPago:0,fixa:true},
-  {id:18,nome:"ENEL STUDIO B",dia:10,valor:719,status:"PENDENTE",obs:"PEGAR COM A GABI SEGUNDA VIA",cod:"enel gabriella.wencriacoes@gmail.com - senha Eutuv610@",valorPago:0,fixa:true},
-  {id:19,nome:"RETIRADA (2)",dia:null,valor:11000,status:"PAGO",obs:"",cod:"",valorPago:11000,fixa:false},
-  {id:20,nome:"CARTÃO INTER EMPRESA",dia:12,valor:1420,status:"PAGO",obs:"",cod:"",valorPago:1420,fixa:true},
-  {id:21,nome:"CARTÃO CAIXA",dia:15,valor:7275,status:"PAGO",obs:"",cod:"",valorPago:7275,fixa:true},
-  {id:22,nome:"VIVO STUDIO B (CNPJ)",dia:15,valor:136,status:"PENDENTE",obs:"",cod:"899926704552 - LOGIN VIVO senha Wiab5022@",valorPago:0,fixa:true},
-  {id:23,nome:"INSS GABRIELLA",dia:19,valor:166.70,status:"PENDENTE",obs:"",cod:"",valorPago:0,fixa:true},
-  {id:24,nome:"DAS IMPOSTO",dia:20,valor:1369,status:"PENDENTE",obs:"",cod:"",valorPago:0,fixa:true},
-  {id:25,nome:"INVESTIMENTO STUDIO",dia:20,valor:0,status:"PAGO",obs:"",cod:"",valorPago:0,fixa:false},
-  {id:26,nome:"MUNDIVOX 154",dia:25,valor:561,status:"PAGO",obs:"NO EMAIL WEN PRODUTORA",cod:"",valorPago:561,fixa:true},
-  {id:27,nome:"MUNDIVOX 123",dia:25,valor:561,status:"PAGO",obs:"NO EMAIL WEN PRODUTORA",cod:"",valorPago:561,fixa:true},
-  {id:28,nome:"ONIX CONTADORA",dia:25,valor:410,status:"PENDENTE",obs:"PEGAR NO EMAIL WEN PRODUTORA",cod:"",valorPago:0,fixa:true},
-  {id:29,nome:"BUSCA CLIENTE",dia:25,valor:788,status:"PAGO",obs:"",cod:"",valorPago:788,fixa:true},
-  {id:30,nome:"CLARO WILL",dia:25,valor:110,status:"PENDENTE",obs:"PEGAR NO APP BOLETO",cod:"senha wen140909",valorPago:0,fixa:true},
-  {id:31,nome:"CARTÃO WILL - STUDIO (ALMOÇO/UBER/GOOGLE)",dia:27,valor:5115,status:"PAGO",obs:"",cod:"",valorPago:5115,fixa:true},
-  {id:32,nome:"PARCELAMENTO IMPOSTO",dia:30,valor:336.31,status:"PENDENTE",obs:"",cod:"",valorPago:0,fixa:true},
-];
-
-const MESES_LISTA=["FEV/2026","MAR/2026","ABR/2026","MAI/2026","JUN/2026","JUL/2026","AGO/2026","SET/2026","OUT/2026","NOV/2026","DEZ/2026","JAN/2027"];
+// ===== FIREBASE FIRESTORE SYNC =====
+const FB_PROJECT = 'wencontasapagar';
+const FB_API_KEY = 'AIzaSyC7hYN3__Q_4MNAu6VCTXbTdvVSW37IneI';
+const FIRESTORE_URL = `https://firestore.googleapis.com/v1/projects/${FB_PROJECT}/databases/(default)/documents`;
 
 function mesAtualReal(){
   const n=["JAN","FEV","MAR","ABR","MAI","JUN","JUL","AGO","SET","OUT","NOV","DEZ"];
@@ -671,15 +767,17 @@ function mesAtualReal(){
 
 let meses=JSON.parse(localStorage.getItem('wen_meses6')||'null');
 if(!meses){
-  meses={"FEV/2026": [{"id": 1, "nome": "ESCOLA SOPHIA", "dia": 1, "valor": 0, "status": "PAGO", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 2, "nome": "ALUGUEL STUDIO A SALA 154", "dia": 5, "valor": 3800, "status": "PAGO", "obs": "BERNARDO DORF", "cod": "", "fixa": false, "categoria": "", "valorPago": 3800}, {"id": 3, "nome": "CONDOMINIO STUDIO 181/182", "dia": 5, "valor": 3438.42, "status": "PAGO", "obs": "NO EMAIL WEN PRODUTORA Hubert SENHA 037881", "cod": "237933930890011551349320056000005299520000260733", "fixa": false, "categoria": "", "valorPago": 3438.42}, {"id": 4, "nome": "CONDOMINIO STUDIO 154", "dia": 5, "valor": 1779.43, "status": "PAGO", "obs": "NO EMAIL WEN PRODUTORA Hubert SENHA 003943", "cod": "", "fixa": false, "categoria": "", "valorPago": 1779.43}, {"id": 5, "nome": "ANTONIO BOTELHO", "dia": 5, "valor": 3200, "status": "PAGO", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 3200}, {"id": 6, "nome": "AJUDA BOTELHO", "dia": 5, "valor": 300, "status": "PAGO", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 300}, {"id": 7, "nome": "RAUL DÓRIA", "dia": 5, "valor": 4000, "status": "PAGO", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 4000}, {"id": 8, "nome": "RAUL AJUDA", "dia": 5, "valor": 500, "status": "PAGO", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 500}, {"id": 9, "nome": "TRAFEGO PAGO", "dia": 5, "valor": 1997, "status": "PAGO", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 1997}, {"id": 10, "nome": "GABRIELLA MARTINS", "dia": 5, "valor": 1500, "status": "PAGO", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 1500}, {"id": 11, "nome": "ENRICO", "dia": 5, "valor": 2100, "status": "PAGO", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 2100}, {"id": 12, "nome": "MICHAEL", "dia": 5, "valor": 780, "status": "PAGO", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 780}, {"id": 13, "nome": "RETIRADA (1)", "dia": null, "valor": 3500, "status": "PAGO", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 3500}, {"id": 14, "nome": "ALUGUEL STUDIO B SALA 181/182", "dia": 5, "valor": 0, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 15, "nome": "ENEL STUDIO A - SALA 154", "dia": 5, "valor": 555, "status": "PENDENTE", "obs": "PEGAR COM A GABI SEGUNDA VIA", "cod": "enel gabriella.wencriacoes@gmail.com - senha Eutuv610@", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 16, "nome": "CHEIRO BOM", "dia": 10, "valor": 182, "status": "PENDENTE", "obs": "NO EMAIL WEN PRODUTORA", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 17, "nome": "VIVO STUDIO A (CPF GABI)", "dia": 10, "valor": 153.64, "status": "PENDENTE", "obs": "NO EMAIL WEN PRODUTORA", "cod": "cód. cliente 00000167684640 (100291)", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 18, "nome": "ENEL STUDIO B", "dia": 10, "valor": 719, "status": "PENDENTE", "obs": "PEGAR COM A GABI SEGUNDA VIA", "cod": "enel gabriella.wencriacoes@gmail.com - senha Eutuv610@", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 19, "nome": "RETIRADA (2)", "dia": null, "valor": 11000, "status": "PAGO", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 11000}, {"id": 20, "nome": "CARTÃO INTER EMPRESA", "dia": 12, "valor": 1420, "status": "PAGO", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 1420}, {"id": 21, "nome": "CARTÃO CAIXA", "dia": 15, "valor": 7275, "status": "PAGO", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 7275}, {"id": 22, "nome": "VIVO STUDIO B (CNPJ)", "dia": 15, "valor": 136, "status": "PENDENTE", "obs": "", "cod": "899926704552 - LOGIN VIVO senha Wiab5022@", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 23, "nome": "INSS GABRIELLA", "dia": 19, "valor": 166.7, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 24, "nome": "DAS IMPOSTO", "dia": 20, "valor": 1369, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 25, "nome": "INVESTIMENTO STUDIO", "dia": 20, "valor": 0, "status": "PAGO", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 26, "nome": "MUNDIVOX 154", "dia": 25, "valor": 561, "status": "PAGO", "obs": "NO EMAIL WEN PRODUTORA", "cod": "", "fixa": false, "categoria": "", "valorPago": 561}, {"id": 27, "nome": "MUNDIVOX 123", "dia": 25, "valor": 561, "status": "PAGO", "obs": "NO EMAIL WEN PRODUTORA", "cod": "", "fixa": false, "categoria": "", "valorPago": 561}, {"id": 28, "nome": "ONIX CONTADORA", "dia": 25, "valor": 410, "status": "PENDENTE", "obs": "PEGAR NO EMAIL WEN PRODUTORA", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 29, "nome": "BUSCA CLIENTE", "dia": 25, "valor": 788, "status": "PAGO", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 788}, {"id": 30, "nome": "CLARO WILL", "dia": 25, "valor": 110, "status": "PENDENTE", "obs": "PEGAR NO APP BOLETO", "cod": "senha wen140909", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 31, "nome": "CARTÃO WILL - STUDIO (ALMOÇO/UBER/GOOGLE)", "dia": 27, "valor": 5115, "status": "PAGO", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 5115}, {"id": 32, "nome": "PARCELAMENTO IMPOSTO", "dia": 30, "valor": 336.31, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}], "MAR/2026": [{"id": 1001, "nome": "ESCOLA SOPHIA", "dia": 1, "valor": 0, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 1002, "nome": "ALUGUEL STUDIO A SALA 154", "dia": 5, "valor": 3800, "status": "PENDENTE", "obs": "BERNARDO DORF", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 1003, "nome": "CONDOMINIO STUDIO 181/182", "dia": 5, "valor": 3438.42, "status": "PENDENTE", "obs": "NO EMAIL WEN PRODUTORA Hubert SENHA 037881", "cod": "237933930890011551349320056000005299520000260733", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 1004, "nome": "CONDOMINIO STUDIO 154", "dia": 5, "valor": 1779.43, "status": "PENDENTE", "obs": "NO EMAIL WEN PRODUTORA Hubert SENHA 003943", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 1005, "nome": "ANTONIO BOTELHO", "dia": 5, "valor": 3200, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 1006, "nome": "AJUDA BOTELHO", "dia": 5, "valor": 300, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 1007, "nome": "RAUL DÓRIA", "dia": 5, "valor": 4000, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 1008, "nome": "RAUL AJUDA", "dia": 5, "valor": 500, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 1009, "nome": "TRAFEGO PAGO", "dia": 5, "valor": 1997, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 1010, "nome": "GABRIELLA MARTINS", "dia": 5, "valor": 1500, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 1011, "nome": "ENRICO", "dia": 5, "valor": 2100, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 1012, "nome": "MICHAEL", "dia": 5, "valor": 780, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 1013, "nome": "RETIRADA (1)", "dia": null, "valor": 3500, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 1014, "nome": "ALUGUEL STUDIO B SALA 181/182", "dia": 5, "valor": 0, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 1015, "nome": "ENEL STUDIO A - SALA 154", "dia": 5, "valor": 555, "status": "PENDENTE", "obs": "PEGAR COM A GABI SEGUNDA VIA", "cod": "enel gabriella.wencriacoes@gmail.com - senha Eutuv610@", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 1016, "nome": "CHEIRO BOM", "dia": 10, "valor": 182, "status": "PENDENTE", "obs": "NO EMAIL WEN PRODUTORA", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 1017, "nome": "VIVO STUDIO A (CPF GABI)", "dia": 10, "valor": 153.64, "status": "PENDENTE", "obs": "NO EMAIL WEN PRODUTORA", "cod": "cód. cliente 00000167684640 (100291)", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 1018, "nome": "ENEL STUDIO B", "dia": 10, "valor": 719, "status": "PENDENTE", "obs": "PEGAR COM A GABI SEGUNDA VIA", "cod": "enel gabriella.wencriacoes@gmail.com - senha Eutuv610@", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 1019, "nome": "RETIRADA (2)", "dia": null, "valor": 11000, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 1020, "nome": "CARTÃO INTER EMPRESA", "dia": 12, "valor": 1420, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 1021, "nome": "CARTÃO CAIXA", "dia": 15, "valor": 7275, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 1022, "nome": "VIVO STUDIO B (CNPJ)", "dia": 15, "valor": 136, "status": "PENDENTE", "obs": "", "cod": "899926704552 - LOGIN VIVO senha Wiab5022@", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 1023, "nome": "INSS GABRIELLA", "dia": 19, "valor": 166.7, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 1024, "nome": "DAS IMPOSTO", "dia": 20, "valor": 1369, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 1025, "nome": "INVESTIMENTO STUDIO", "dia": 20, "valor": 0, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 1026, "nome": "MUNDIVOX 154", "dia": 25, "valor": 561, "status": "PENDENTE", "obs": "NO EMAIL WEN PRODUTORA", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 1027, "nome": "MUNDIVOX 123", "dia": 25, "valor": 561, "status": "PENDENTE", "obs": "NO EMAIL WEN PRODUTORA", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 1028, "nome": "ONIX CONTADORA", "dia": 25, "valor": 410, "status": "PENDENTE", "obs": "PEGAR NO EMAIL WEN PRODUTORA", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 1029, "nome": "BUSCA CLIENTE", "dia": 25, "valor": 788, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 1030, "nome": "CLARO WILL", "dia": 25, "valor": 110, "status": "PENDENTE", "obs": "PEGAR NO APP BOLETO", "cod": "senha wen140909", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 1031, "nome": "CARTÃO WILL - STUDIO (ALMOÇO/UBER/GOOGLE)", "dia": 27, "valor": 5115, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 1032, "nome": "PARCELAMENTO IMPOSTO", "dia": 30, "valor": 336.31, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}], "ABR/2026": [{"id": 2001, "nome": "ESCOLA SOPHIA", "dia": 1, "valor": 0, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 2002, "nome": "ALUGUEL STUDIO A SALA 154", "dia": 5, "valor": 3800, "status": "PENDENTE", "obs": "BERNARDO DORF", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 2003, "nome": "CONDOMINIO STUDIO 181/182", "dia": 5, "valor": 3438.42, "status": "PENDENTE", "obs": "NO EMAIL WEN PRODUTORA Hubert SENHA 037881", "cod": "237933930890011551349320056000005299520000260733", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 2004, "nome": "CONDOMINIO STUDIO 154", "dia": 5, "valor": 1779.43, "status": "PENDENTE", "obs": "NO EMAIL WEN PRODUTORA Hubert SENHA 003943", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 2005, "nome": "ANTONIO BOTELHO", "dia": 5, "valor": 3200, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 2006, "nome": "AJUDA BOTELHO", "dia": 5, "valor": 300, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 2007, "nome": "RAUL DÓRIA", "dia": 5, "valor": 4000, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 2008, "nome": "RAUL AJUDA", "dia": 5, "valor": 500, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 2009, "nome": "TRAFEGO PAGO", "dia": 5, "valor": 1997, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 2010, "nome": "GABRIELLA MARTINS", "dia": 5, "valor": 1500, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 2011, "nome": "ENRICO", "dia": 5, "valor": 2100, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 2012, "nome": "MICHAEL", "dia": 5, "valor": 780, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 2013, "nome": "RETIRADA (1)", "dia": null, "valor": 3500, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 2014, "nome": "ALUGUEL STUDIO B SALA 181/182", "dia": 5, "valor": 0, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 2015, "nome": "ENEL STUDIO A - SALA 154", "dia": 5, "valor": 555, "status": "PENDENTE", "obs": "PEGAR COM A GABI SEGUNDA VIA", "cod": "enel gabriella.wencriacoes@gmail.com - senha Eutuv610@", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 2016, "nome": "CHEIRO BOM", "dia": 10, "valor": 182, "status": "PENDENTE", "obs": "NO EMAIL WEN PRODUTORA", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 2017, "nome": "VIVO STUDIO A (CPF GABI)", "dia": 10, "valor": 153.64, "status": "PENDENTE", "obs": "NO EMAIL WEN PRODUTORA", "cod": "cód. cliente 00000167684640 (100291)", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 2018, "nome": "ENEL STUDIO B", "dia": 10, "valor": 719, "status": "PENDENTE", "obs": "PEGAR COM A GABI SEGUNDA VIA", "cod": "enel gabriella.wencriacoes@gmail.com - senha Eutuv610@", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 2019, "nome": "RETIRADA (2)", "dia": null, "valor": 11000, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 2020, "nome": "CARTÃO INTER EMPRESA", "dia": 12, "valor": 1420, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 2021, "nome": "CARTÃO CAIXA", "dia": 15, "valor": 7275, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 2022, "nome": "VIVO STUDIO B (CNPJ)", "dia": 15, "valor": 136, "status": "PENDENTE", "obs": "", "cod": "899926704552 - LOGIN VIVO senha Wiab5022@", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 2023, "nome": "INSS GABRIELLA", "dia": 19, "valor": 166.7, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 2024, "nome": "DAS IMPOSTO", "dia": 20, "valor": 1369, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 2025, "nome": "INVESTIMENTO STUDIO", "dia": 20, "valor": 0, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 2026, "nome": "MUNDIVOX 154", "dia": 25, "valor": 561, "status": "PENDENTE", "obs": "NO EMAIL WEN PRODUTORA", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 2027, "nome": "MUNDIVOX 123", "dia": 25, "valor": 561, "status": "PENDENTE", "obs": "NO EMAIL WEN PRODUTORA", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 2028, "nome": "ONIX CONTADORA", "dia": 25, "valor": 410, "status": "PENDENTE", "obs": "PEGAR NO EMAIL WEN PRODUTORA", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 2029, "nome": "BUSCA CLIENTE", "dia": 25, "valor": 788, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 2030, "nome": "CLARO WILL", "dia": 25, "valor": 110, "status": "PENDENTE", "obs": "PEGAR NO APP BOLETO", "cod": "senha wen140909", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 2031, "nome": "CARTÃO WILL - STUDIO (ALMOÇO/UBER/GOOGLE)", "dia": 27, "valor": 5115, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 2032, "nome": "PARCELAMENTO IMPOSTO", "dia": 30, "valor": 336.31, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}], "MAI/2026": [{"id": 3001, "nome": "ESCOLA SOPHIA", "dia": 1, "valor": 0, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 3002, "nome": "ALUGUEL STUDIO A SALA 154", "dia": 5, "valor": 3800, "status": "PENDENTE", "obs": "BERNARDO DORF", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 3003, "nome": "CONDOMINIO STUDIO 181/182", "dia": 5, "valor": 3438.42, "status": "PENDENTE", "obs": "NO EMAIL WEN PRODUTORA Hubert SENHA 037881", "cod": "237933930890011551349320056000005299520000260733", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 3004, "nome": "CONDOMINIO STUDIO 154", "dia": 5, "valor": 1779.43, "status": "PENDENTE", "obs": "NO EMAIL WEN PRODUTORA Hubert SENHA 003943", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 3005, "nome": "ANTONIO BOTELHO", "dia": 5, "valor": 3200, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 3006, "nome": "AJUDA BOTELHO", "dia": 5, "valor": 300, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 3007, "nome": "RAUL DÓRIA", "dia": 5, "valor": 4000, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 3008, "nome": "RAUL AJUDA", "dia": 5, "valor": 500, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 3009, "nome": "TRAFEGO PAGO", "dia": 5, "valor": 1997, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 3010, "nome": "GABRIELLA MARTINS", "dia": 5, "valor": 1500, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 3011, "nome": "ENRICO", "dia": 5, "valor": 2100, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 3012, "nome": "MICHAEL", "dia": 5, "valor": 780, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 3013, "nome": "RETIRADA (1)", "dia": null, "valor": 3500, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 3014, "nome": "ALUGUEL STUDIO B SALA 181/182", "dia": 5, "valor": 0, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 3015, "nome": "ENEL STUDIO A - SALA 154", "dia": 5, "valor": 555, "status": "PENDENTE", "obs": "PEGAR COM A GABI SEGUNDA VIA", "cod": "enel gabriella.wencriacoes@gmail.com - senha Eutuv610@", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 3016, "nome": "CHEIRO BOM", "dia": 10, "valor": 182, "status": "PENDENTE", "obs": "NO EMAIL WEN PRODUTORA", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 3017, "nome": "VIVO STUDIO A (CPF GABI)", "dia": 10, "valor": 153.64, "status": "PENDENTE", "obs": "NO EMAIL WEN PRODUTORA", "cod": "cód. cliente 00000167684640 (100291)", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 3018, "nome": "ENEL STUDIO B", "dia": 10, "valor": 719, "status": "PENDENTE", "obs": "PEGAR COM A GABI SEGUNDA VIA", "cod": "enel gabriella.wencriacoes@gmail.com - senha Eutuv610@", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 3019, "nome": "RETIRADA (2)", "dia": null, "valor": 11000, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 3020, "nome": "CARTÃO INTER EMPRESA", "dia": 12, "valor": 1420, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 3021, "nome": "CARTÃO CAIXA", "dia": 15, "valor": 7275, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 3022, "nome": "VIVO STUDIO B (CNPJ)", "dia": 15, "valor": 136, "status": "PENDENTE", "obs": "", "cod": "899926704552 - LOGIN VIVO senha Wiab5022@", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 3023, "nome": "INSS GABRIELLA", "dia": 19, "valor": 166.7, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 3024, "nome": "DAS IMPOSTO", "dia": 20, "valor": 1369, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 3025, "nome": "INVESTIMENTO STUDIO", "dia": 20, "valor": 0, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 3026, "nome": "MUNDIVOX 154", "dia": 25, "valor": 561, "status": "PENDENTE", "obs": "NO EMAIL WEN PRODUTORA", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 3027, "nome": "MUNDIVOX 123", "dia": 25, "valor": 561, "status": "PENDENTE", "obs": "NO EMAIL WEN PRODUTORA", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 3028, "nome": "ONIX CONTADORA", "dia": 25, "valor": 410, "status": "PENDENTE", "obs": "PEGAR NO EMAIL WEN PRODUTORA", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 3029, "nome": "BUSCA CLIENTE", "dia": 25, "valor": 788, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 3030, "nome": "CLARO WILL", "dia": 25, "valor": 110, "status": "PENDENTE", "obs": "PEGAR NO APP BOLETO", "cod": "senha wen140909", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 3031, "nome": "CARTÃO WILL - STUDIO (ALMOÇO/UBER/GOOGLE)", "dia": 27, "valor": 5115, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 3032, "nome": "PARCELAMENTO IMPOSTO", "dia": 30, "valor": 336.31, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}], "JUN/2026": [{"id": 4001, "nome": "ESCOLA SOPHIA", "dia": 1, "valor": 0, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 4002, "nome": "ALUGUEL STUDIO A SALA 154", "dia": 5, "valor": 3800, "status": "PENDENTE", "obs": "BERNARDO DORF", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 4003, "nome": "CONDOMINIO STUDIO 181/182", "dia": 5, "valor": 3438.42, "status": "PENDENTE", "obs": "NO EMAIL WEN PRODUTORA Hubert SENHA 037881", "cod": "237933930890011551349320056000005299520000260733", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 4004, "nome": "CONDOMINIO STUDIO 154", "dia": 5, "valor": 1779.43, "status": "PENDENTE", "obs": "NO EMAIL WEN PRODUTORA Hubert SENHA 003943", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 4005, "nome": "ANTONIO BOTELHO", "dia": 5, "valor": 3200, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 4006, "nome": "AJUDA BOTELHO", "dia": 5, "valor": 300, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 4007, "nome": "RAUL DÓRIA", "dia": 5, "valor": 4000, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 4008, "nome": "RAUL AJUDA", "dia": 5, "valor": 500, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 4009, "nome": "TRAFEGO PAGO", "dia": 5, "valor": 1997, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 4010, "nome": "GABRIELLA MARTINS", "dia": 5, "valor": 1500, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 4011, "nome": "ENRICO", "dia": 5, "valor": 2100, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 4012, "nome": "MICHAEL", "dia": 5, "valor": 780, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 4013, "nome": "RETIRADA (1)", "dia": null, "valor": 3500, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 4014, "nome": "ALUGUEL STUDIO B SALA 181/182", "dia": 5, "valor": 0, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 4015, "nome": "ENEL STUDIO A - SALA 154", "dia": 5, "valor": 555, "status": "PENDENTE", "obs": "PEGAR COM A GABI SEGUNDA VIA", "cod": "enel gabriella.wencriacoes@gmail.com - senha Eutuv610@", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 4016, "nome": "CHEIRO BOM", "dia": 10, "valor": 182, "status": "PENDENTE", "obs": "NO EMAIL WEN PRODUTORA", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 4017, "nome": "VIVO STUDIO A (CPF GABI)", "dia": 10, "valor": 153.64, "status": "PENDENTE", "obs": "NO EMAIL WEN PRODUTORA", "cod": "cód. cliente 00000167684640 (100291)", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 4018, "nome": "ENEL STUDIO B", "dia": 10, "valor": 719, "status": "PENDENTE", "obs": "PEGAR COM A GABI SEGUNDA VIA", "cod": "enel gabriella.wencriacoes@gmail.com - senha Eutuv610@", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 4019, "nome": "RETIRADA (2)", "dia": null, "valor": 11000, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 4020, "nome": "CARTÃO INTER EMPRESA", "dia": 12, "valor": 1420, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 4021, "nome": "CARTÃO CAIXA", "dia": 15, "valor": 7275, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 4022, "nome": "VIVO STUDIO B (CNPJ)", "dia": 15, "valor": 136, "status": "PENDENTE", "obs": "", "cod": "899926704552 - LOGIN VIVO senha Wiab5022@", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 4023, "nome": "INSS GABRIELLA", "dia": 19, "valor": 166.7, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 4024, "nome": "DAS IMPOSTO", "dia": 20, "valor": 1369, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 4025, "nome": "INVESTIMENTO STUDIO", "dia": 20, "valor": 0, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 4026, "nome": "MUNDIVOX 154", "dia": 25, "valor": 561, "status": "PENDENTE", "obs": "NO EMAIL WEN PRODUTORA", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 4027, "nome": "MUNDIVOX 123", "dia": 25, "valor": 561, "status": "PENDENTE", "obs": "NO EMAIL WEN PRODUTORA", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 4028, "nome": "ONIX CONTADORA", "dia": 25, "valor": 410, "status": "PENDENTE", "obs": "PEGAR NO EMAIL WEN PRODUTORA", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 4029, "nome": "BUSCA CLIENTE", "dia": 25, "valor": 788, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 4030, "nome": "CLARO WILL", "dia": 25, "valor": 110, "status": "PENDENTE", "obs": "PEGAR NO APP BOLETO", "cod": "senha wen140909", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 4031, "nome": "CARTÃO WILL - STUDIO (ALMOÇO/UBER/GOOGLE)", "dia": 27, "valor": 5115, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 4032, "nome": "PARCELAMENTO IMPOSTO", "dia": 30, "valor": 336.31, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}], "JUL/2026": [{"id": 5001, "nome": "ESCOLA SOPHIA", "dia": 1, "valor": 0, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 5002, "nome": "ALUGUEL STUDIO A SALA 154", "dia": 5, "valor": 3800, "status": "PENDENTE", "obs": "BERNARDO DORF", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 5003, "nome": "CONDOMINIO STUDIO 181/182", "dia": 5, "valor": 3438.42, "status": "PENDENTE", "obs": "NO EMAIL WEN PRODUTORA Hubert SENHA 037881", "cod": "237933930890011551349320056000005299520000260733", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 5004, "nome": "CONDOMINIO STUDIO 154", "dia": 5, "valor": 1779.43, "status": "PENDENTE", "obs": "NO EMAIL WEN PRODUTORA Hubert SENHA 003943", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 5005, "nome": "ANTONIO BOTELHO", "dia": 5, "valor": 3200, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 5006, "nome": "AJUDA BOTELHO", "dia": 5, "valor": 300, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 5007, "nome": "RAUL DÓRIA", "dia": 5, "valor": 4000, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 5008, "nome": "RAUL AJUDA", "dia": 5, "valor": 500, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 5009, "nome": "TRAFEGO PAGO", "dia": 5, "valor": 1997, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 5010, "nome": "GABRIELLA MARTINS", "dia": 5, "valor": 1500, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 5011, "nome": "ENRICO", "dia": 5, "valor": 2100, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 5012, "nome": "MICHAEL", "dia": 5, "valor": 780, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 5013, "nome": "RETIRADA (1)", "dia": null, "valor": 3500, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 5014, "nome": "ALUGUEL STUDIO B SALA 181/182", "dia": 5, "valor": 0, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 5015, "nome": "ENEL STUDIO A - SALA 154", "dia": 5, "valor": 555, "status": "PENDENTE", "obs": "PEGAR COM A GABI SEGUNDA VIA", "cod": "enel gabriella.wencriacoes@gmail.com - senha Eutuv610@", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 5016, "nome": "CHEIRO BOM", "dia": 10, "valor": 182, "status": "PENDENTE", "obs": "NO EMAIL WEN PRODUTORA", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 5017, "nome": "VIVO STUDIO A (CPF GABI)", "dia": 10, "valor": 153.64, "status": "PENDENTE", "obs": "NO EMAIL WEN PRODUTORA", "cod": "cód. cliente 00000167684640 (100291)", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 5018, "nome": "ENEL STUDIO B", "dia": 10, "valor": 719, "status": "PENDENTE", "obs": "PEGAR COM A GABI SEGUNDA VIA", "cod": "enel gabriella.wencriacoes@gmail.com - senha Eutuv610@", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 5019, "nome": "RETIRADA (2)", "dia": null, "valor": 11000, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 5020, "nome": "CARTÃO INTER EMPRESA", "dia": 12, "valor": 1420, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 5021, "nome": "CARTÃO CAIXA", "dia": 15, "valor": 7275, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 5022, "nome": "VIVO STUDIO B (CNPJ)", "dia": 15, "valor": 136, "status": "PENDENTE", "obs": "", "cod": "899926704552 - LOGIN VIVO senha Wiab5022@", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 5023, "nome": "INSS GABRIELLA", "dia": 19, "valor": 166.7, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 5024, "nome": "DAS IMPOSTO", "dia": 20, "valor": 1369, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 5025, "nome": "INVESTIMENTO STUDIO", "dia": 20, "valor": 0, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 5026, "nome": "MUNDIVOX 154", "dia": 25, "valor": 561, "status": "PENDENTE", "obs": "NO EMAIL WEN PRODUTORA", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 5027, "nome": "MUNDIVOX 123", "dia": 25, "valor": 561, "status": "PENDENTE", "obs": "NO EMAIL WEN PRODUTORA", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 5028, "nome": "ONIX CONTADORA", "dia": 25, "valor": 410, "status": "PENDENTE", "obs": "PEGAR NO EMAIL WEN PRODUTORA", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 5029, "nome": "BUSCA CLIENTE", "dia": 25, "valor": 788, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 5030, "nome": "CLARO WILL", "dia": 25, "valor": 110, "status": "PENDENTE", "obs": "PEGAR NO APP BOLETO", "cod": "senha wen140909", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 5031, "nome": "CARTÃO WILL - STUDIO (ALMOÇO/UBER/GOOGLE)", "dia": 27, "valor": 5115, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 5032, "nome": "PARCELAMENTO IMPOSTO", "dia": 30, "valor": 336.31, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}], "AGO/2026": [{"id": 6001, "nome": "ESCOLA SOPHIA", "dia": 1, "valor": 0, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 6002, "nome": "ALUGUEL STUDIO A SALA 154", "dia": 5, "valor": 3800, "status": "PENDENTE", "obs": "BERNARDO DORF", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 6003, "nome": "CONDOMINIO STUDIO 181/182", "dia": 5, "valor": 3438.42, "status": "PENDENTE", "obs": "NO EMAIL WEN PRODUTORA Hubert SENHA 037881", "cod": "237933930890011551349320056000005299520000260733", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 6004, "nome": "CONDOMINIO STUDIO 154", "dia": 5, "valor": 1779.43, "status": "PENDENTE", "obs": "NO EMAIL WEN PRODUTORA Hubert SENHA 003943", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 6005, "nome": "ANTONIO BOTELHO", "dia": 5, "valor": 3200, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 6006, "nome": "AJUDA BOTELHO", "dia": 5, "valor": 300, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 6007, "nome": "RAUL DÓRIA", "dia": 5, "valor": 4000, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 6008, "nome": "RAUL AJUDA", "dia": 5, "valor": 500, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 6009, "nome": "TRAFEGO PAGO", "dia": 5, "valor": 1997, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 6010, "nome": "GABRIELLA MARTINS", "dia": 5, "valor": 1500, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 6011, "nome": "ENRICO", "dia": 5, "valor": 2100, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 6012, "nome": "MICHAEL", "dia": 5, "valor": 780, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 6013, "nome": "RETIRADA (1)", "dia": null, "valor": 3500, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 6014, "nome": "ALUGUEL STUDIO B SALA 181/182", "dia": 5, "valor": 0, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 6015, "nome": "ENEL STUDIO A - SALA 154", "dia": 5, "valor": 555, "status": "PENDENTE", "obs": "PEGAR COM A GABI SEGUNDA VIA", "cod": "enel gabriella.wencriacoes@gmail.com - senha Eutuv610@", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 6016, "nome": "CHEIRO BOM", "dia": 10, "valor": 182, "status": "PENDENTE", "obs": "NO EMAIL WEN PRODUTORA", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 6017, "nome": "VIVO STUDIO A (CPF GABI)", "dia": 10, "valor": 153.64, "status": "PENDENTE", "obs": "NO EMAIL WEN PRODUTORA", "cod": "cód. cliente 00000167684640 (100291)", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 6018, "nome": "ENEL STUDIO B", "dia": 10, "valor": 719, "status": "PENDENTE", "obs": "PEGAR COM A GABI SEGUNDA VIA", "cod": "enel gabriella.wencriacoes@gmail.com - senha Eutuv610@", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 6019, "nome": "RETIRADA (2)", "dia": null, "valor": 11000, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 6020, "nome": "CARTÃO INTER EMPRESA", "dia": 12, "valor": 1420, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 6021, "nome": "CARTÃO CAIXA", "dia": 15, "valor": 7275, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 6022, "nome": "VIVO STUDIO B (CNPJ)", "dia": 15, "valor": 136, "status": "PENDENTE", "obs": "", "cod": "899926704552 - LOGIN VIVO senha Wiab5022@", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 6023, "nome": "INSS GABRIELLA", "dia": 19, "valor": 166.7, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 6024, "nome": "DAS IMPOSTO", "dia": 20, "valor": 1369, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 6025, "nome": "INVESTIMENTO STUDIO", "dia": 20, "valor": 0, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 6026, "nome": "MUNDIVOX 154", "dia": 25, "valor": 561, "status": "PENDENTE", "obs": "NO EMAIL WEN PRODUTORA", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 6027, "nome": "MUNDIVOX 123", "dia": 25, "valor": 561, "status": "PENDENTE", "obs": "NO EMAIL WEN PRODUTORA", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 6028, "nome": "ONIX CONTADORA", "dia": 25, "valor": 410, "status": "PENDENTE", "obs": "PEGAR NO EMAIL WEN PRODUTORA", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 6029, "nome": "BUSCA CLIENTE", "dia": 25, "valor": 788, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 6030, "nome": "CLARO WILL", "dia": 25, "valor": 110, "status": "PENDENTE", "obs": "PEGAR NO APP BOLETO", "cod": "senha wen140909", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 6031, "nome": "CARTÃO WILL - STUDIO (ALMOÇO/UBER/GOOGLE)", "dia": 27, "valor": 5115, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 6032, "nome": "PARCELAMENTO IMPOSTO", "dia": 30, "valor": 336.31, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}], "SET/2026": [{"id": 7001, "nome": "ESCOLA SOPHIA", "dia": 1, "valor": 0, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 7002, "nome": "ALUGUEL STUDIO A SALA 154", "dia": 5, "valor": 3800, "status": "PENDENTE", "obs": "BERNARDO DORF", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 7003, "nome": "CONDOMINIO STUDIO 181/182", "dia": 5, "valor": 3438.42, "status": "PENDENTE", "obs": "NO EMAIL WEN PRODUTORA Hubert SENHA 037881", "cod": "237933930890011551349320056000005299520000260733", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 7004, "nome": "CONDOMINIO STUDIO 154", "dia": 5, "valor": 1779.43, "status": "PENDENTE", "obs": "NO EMAIL WEN PRODUTORA Hubert SENHA 003943", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 7005, "nome": "ANTONIO BOTELHO", "dia": 5, "valor": 3200, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 7006, "nome": "AJUDA BOTELHO", "dia": 5, "valor": 300, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 7007, "nome": "RAUL DÓRIA", "dia": 5, "valor": 4000, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 7008, "nome": "RAUL AJUDA", "dia": 5, "valor": 500, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 7009, "nome": "TRAFEGO PAGO", "dia": 5, "valor": 1997, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 7010, "nome": "GABRIELLA MARTINS", "dia": 5, "valor": 1500, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 7011, "nome": "ENRICO", "dia": 5, "valor": 2100, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 7012, "nome": "MICHAEL", "dia": 5, "valor": 780, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 7013, "nome": "RETIRADA (1)", "dia": null, "valor": 3500, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 7014, "nome": "ALUGUEL STUDIO B SALA 181/182", "dia": 5, "valor": 0, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 7015, "nome": "ENEL STUDIO A - SALA 154", "dia": 5, "valor": 555, "status": "PENDENTE", "obs": "PEGAR COM A GABI SEGUNDA VIA", "cod": "enel gabriella.wencriacoes@gmail.com - senha Eutuv610@", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 7016, "nome": "CHEIRO BOM", "dia": 10, "valor": 182, "status": "PENDENTE", "obs": "NO EMAIL WEN PRODUTORA", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 7017, "nome": "VIVO STUDIO A (CPF GABI)", "dia": 10, "valor": 153.64, "status": "PENDENTE", "obs": "NO EMAIL WEN PRODUTORA", "cod": "cód. cliente 00000167684640 (100291)", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 7018, "nome": "ENEL STUDIO B", "dia": 10, "valor": 719, "status": "PENDENTE", "obs": "PEGAR COM A GABI SEGUNDA VIA", "cod": "enel gabriella.wencriacoes@gmail.com - senha Eutuv610@", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 7019, "nome": "RETIRADA (2)", "dia": null, "valor": 11000, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 7020, "nome": "CARTÃO INTER EMPRESA", "dia": 12, "valor": 1420, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 7021, "nome": "CARTÃO CAIXA", "dia": 15, "valor": 7275, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 7022, "nome": "VIVO STUDIO B (CNPJ)", "dia": 15, "valor": 136, "status": "PENDENTE", "obs": "", "cod": "899926704552 - LOGIN VIVO senha Wiab5022@", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 7023, "nome": "INSS GABRIELLA", "dia": 19, "valor": 166.7, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 7024, "nome": "DAS IMPOSTO", "dia": 20, "valor": 1369, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 7025, "nome": "INVESTIMENTO STUDIO", "dia": 20, "valor": 0, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 7026, "nome": "MUNDIVOX 154", "dia": 25, "valor": 561, "status": "PENDENTE", "obs": "NO EMAIL WEN PRODUTORA", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 7027, "nome": "MUNDIVOX 123", "dia": 25, "valor": 561, "status": "PENDENTE", "obs": "NO EMAIL WEN PRODUTORA", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 7028, "nome": "ONIX CONTADORA", "dia": 25, "valor": 410, "status": "PENDENTE", "obs": "PEGAR NO EMAIL WEN PRODUTORA", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 7029, "nome": "BUSCA CLIENTE", "dia": 25, "valor": 788, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 7030, "nome": "CLARO WILL", "dia": 25, "valor": 110, "status": "PENDENTE", "obs": "PEGAR NO APP BOLETO", "cod": "senha wen140909", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 7031, "nome": "CARTÃO WILL - STUDIO (ALMOÇO/UBER/GOOGLE)", "dia": 27, "valor": 5115, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 7032, "nome": "PARCELAMENTO IMPOSTO", "dia": 30, "valor": 336.31, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}], "OUT/2026": [{"id": 8001, "nome": "ESCOLA SOPHIA", "dia": 1, "valor": 0, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 8002, "nome": "ALUGUEL STUDIO A SALA 154", "dia": 5, "valor": 3800, "status": "PENDENTE", "obs": "BERNARDO DORF", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 8003, "nome": "CONDOMINIO STUDIO 181/182", "dia": 5, "valor": 3438.42, "status": "PENDENTE", "obs": "NO EMAIL WEN PRODUTORA Hubert SENHA 037881", "cod": "237933930890011551349320056000005299520000260733", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 8004, "nome": "CONDOMINIO STUDIO 154", "dia": 5, "valor": 1779.43, "status": "PENDENTE", "obs": "NO EMAIL WEN PRODUTORA Hubert SENHA 003943", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 8005, "nome": "ANTONIO BOTELHO", "dia": 5, "valor": 3200, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 8006, "nome": "AJUDA BOTELHO", "dia": 5, "valor": 300, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 8007, "nome": "RAUL DÓRIA", "dia": 5, "valor": 4000, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 8008, "nome": "RAUL AJUDA", "dia": 5, "valor": 500, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 8009, "nome": "TRAFEGO PAGO", "dia": 5, "valor": 1997, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 8010, "nome": "GABRIELLA MARTINS", "dia": 5, "valor": 1500, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 8011, "nome": "ENRICO", "dia": 5, "valor": 2100, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 8012, "nome": "MICHAEL", "dia": 5, "valor": 780, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 8013, "nome": "RETIRADA (1)", "dia": null, "valor": 3500, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 8014, "nome": "ALUGUEL STUDIO B SALA 181/182", "dia": 5, "valor": 0, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 8015, "nome": "ENEL STUDIO A - SALA 154", "dia": 5, "valor": 555, "status": "PENDENTE", "obs": "PEGAR COM A GABI SEGUNDA VIA", "cod": "enel gabriella.wencriacoes@gmail.com - senha Eutuv610@", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 8016, "nome": "CHEIRO BOM", "dia": 10, "valor": 182, "status": "PENDENTE", "obs": "NO EMAIL WEN PRODUTORA", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 8017, "nome": "VIVO STUDIO A (CPF GABI)", "dia": 10, "valor": 153.64, "status": "PENDENTE", "obs": "NO EMAIL WEN PRODUTORA", "cod": "cód. cliente 00000167684640 (100291)", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 8018, "nome": "ENEL STUDIO B", "dia": 10, "valor": 719, "status": "PENDENTE", "obs": "PEGAR COM A GABI SEGUNDA VIA", "cod": "enel gabriella.wencriacoes@gmail.com - senha Eutuv610@", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 8019, "nome": "RETIRADA (2)", "dia": null, "valor": 11000, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 8020, "nome": "CARTÃO INTER EMPRESA", "dia": 12, "valor": 1420, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 8021, "nome": "CARTÃO CAIXA", "dia": 15, "valor": 7275, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 8022, "nome": "VIVO STUDIO B (CNPJ)", "dia": 15, "valor": 136, "status": "PENDENTE", "obs": "", "cod": "899926704552 - LOGIN VIVO senha Wiab5022@", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 8023, "nome": "INSS GABRIELLA", "dia": 19, "valor": 166.7, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 8024, "nome": "DAS IMPOSTO", "dia": 20, "valor": 1369, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 8025, "nome": "INVESTIMENTO STUDIO", "dia": 20, "valor": 0, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 8026, "nome": "MUNDIVOX 154", "dia": 25, "valor": 561, "status": "PENDENTE", "obs": "NO EMAIL WEN PRODUTORA", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 8027, "nome": "MUNDIVOX 123", "dia": 25, "valor": 561, "status": "PENDENTE", "obs": "NO EMAIL WEN PRODUTORA", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 8028, "nome": "ONIX CONTADORA", "dia": 25, "valor": 410, "status": "PENDENTE", "obs": "PEGAR NO EMAIL WEN PRODUTORA", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 8029, "nome": "BUSCA CLIENTE", "dia": 25, "valor": 788, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 8030, "nome": "CLARO WILL", "dia": 25, "valor": 110, "status": "PENDENTE", "obs": "PEGAR NO APP BOLETO", "cod": "senha wen140909", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 8031, "nome": "CARTÃO WILL - STUDIO (ALMOÇO/UBER/GOOGLE)", "dia": 27, "valor": 5115, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 8032, "nome": "PARCELAMENTO IMPOSTO", "dia": 30, "valor": 336.31, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}], "NOV/2026": [{"id": 9001, "nome": "ESCOLA SOPHIA", "dia": 1, "valor": 0, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 9002, "nome": "ALUGUEL STUDIO A SALA 154", "dia": 5, "valor": 3800, "status": "PENDENTE", "obs": "BERNARDO DORF", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 9003, "nome": "CONDOMINIO STUDIO 181/182", "dia": 5, "valor": 3438.42, "status": "PENDENTE", "obs": "NO EMAIL WEN PRODUTORA Hubert SENHA 037881", "cod": "237933930890011551349320056000005299520000260733", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 9004, "nome": "CONDOMINIO STUDIO 154", "dia": 5, "valor": 1779.43, "status": "PENDENTE", "obs": "NO EMAIL WEN PRODUTORA Hubert SENHA 003943", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 9005, "nome": "ANTONIO BOTELHO", "dia": 5, "valor": 3200, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 9006, "nome": "AJUDA BOTELHO", "dia": 5, "valor": 300, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 9007, "nome": "RAUL DÓRIA", "dia": 5, "valor": 4000, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 9008, "nome": "RAUL AJUDA", "dia": 5, "valor": 500, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 9009, "nome": "TRAFEGO PAGO", "dia": 5, "valor": 1997, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 9010, "nome": "GABRIELLA MARTINS", "dia": 5, "valor": 1500, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 9011, "nome": "ENRICO", "dia": 5, "valor": 2100, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 9012, "nome": "MICHAEL", "dia": 5, "valor": 780, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 9013, "nome": "RETIRADA (1)", "dia": null, "valor": 3500, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 9014, "nome": "ALUGUEL STUDIO B SALA 181/182", "dia": 5, "valor": 0, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 9015, "nome": "ENEL STUDIO A - SALA 154", "dia": 5, "valor": 555, "status": "PENDENTE", "obs": "PEGAR COM A GABI SEGUNDA VIA", "cod": "enel gabriella.wencriacoes@gmail.com - senha Eutuv610@", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 9016, "nome": "CHEIRO BOM", "dia": 10, "valor": 182, "status": "PENDENTE", "obs": "NO EMAIL WEN PRODUTORA", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 9017, "nome": "VIVO STUDIO A (CPF GABI)", "dia": 10, "valor": 153.64, "status": "PENDENTE", "obs": "NO EMAIL WEN PRODUTORA", "cod": "cód. cliente 00000167684640 (100291)", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 9018, "nome": "ENEL STUDIO B", "dia": 10, "valor": 719, "status": "PENDENTE", "obs": "PEGAR COM A GABI SEGUNDA VIA", "cod": "enel gabriella.wencriacoes@gmail.com - senha Eutuv610@", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 9019, "nome": "RETIRADA (2)", "dia": null, "valor": 11000, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 9020, "nome": "CARTÃO INTER EMPRESA", "dia": 12, "valor": 1420, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 9021, "nome": "CARTÃO CAIXA", "dia": 15, "valor": 7275, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 9022, "nome": "VIVO STUDIO B (CNPJ)", "dia": 15, "valor": 136, "status": "PENDENTE", "obs": "", "cod": "899926704552 - LOGIN VIVO senha Wiab5022@", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 9023, "nome": "INSS GABRIELLA", "dia": 19, "valor": 166.7, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 9024, "nome": "DAS IMPOSTO", "dia": 20, "valor": 1369, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 9025, "nome": "INVESTIMENTO STUDIO", "dia": 20, "valor": 0, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 9026, "nome": "MUNDIVOX 154", "dia": 25, "valor": 561, "status": "PENDENTE", "obs": "NO EMAIL WEN PRODUTORA", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 9027, "nome": "MUNDIVOX 123", "dia": 25, "valor": 561, "status": "PENDENTE", "obs": "NO EMAIL WEN PRODUTORA", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 9028, "nome": "ONIX CONTADORA", "dia": 25, "valor": 410, "status": "PENDENTE", "obs": "PEGAR NO EMAIL WEN PRODUTORA", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 9029, "nome": "BUSCA CLIENTE", "dia": 25, "valor": 788, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 9030, "nome": "CLARO WILL", "dia": 25, "valor": 110, "status": "PENDENTE", "obs": "PEGAR NO APP BOLETO", "cod": "senha wen140909", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 9031, "nome": "CARTÃO WILL - STUDIO (ALMOÇO/UBER/GOOGLE)", "dia": 27, "valor": 5115, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 9032, "nome": "PARCELAMENTO IMPOSTO", "dia": 30, "valor": 336.31, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}], "DEZ/2026": [{"id": 10001, "nome": "ESCOLA SOPHIA", "dia": 1, "valor": 0, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 10002, "nome": "ALUGUEL STUDIO A SALA 154", "dia": 5, "valor": 3800, "status": "PENDENTE", "obs": "BERNARDO DORF", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 10003, "nome": "CONDOMINIO STUDIO 181/182", "dia": 5, "valor": 3438.42, "status": "PENDENTE", "obs": "NO EMAIL WEN PRODUTORA Hubert SENHA 037881", "cod": "237933930890011551349320056000005299520000260733", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 10004, "nome": "CONDOMINIO STUDIO 154", "dia": 5, "valor": 1779.43, "status": "PENDENTE", "obs": "NO EMAIL WEN PRODUTORA Hubert SENHA 003943", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 10005, "nome": "ANTONIO BOTELHO", "dia": 5, "valor": 3200, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 10006, "nome": "AJUDA BOTELHO", "dia": 5, "valor": 300, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 10007, "nome": "RAUL DÓRIA", "dia": 5, "valor": 4000, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 10008, "nome": "RAUL AJUDA", "dia": 5, "valor": 500, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 10009, "nome": "TRAFEGO PAGO", "dia": 5, "valor": 1997, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 10010, "nome": "GABRIELLA MARTINS", "dia": 5, "valor": 1500, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 10011, "nome": "ENRICO", "dia": 5, "valor": 2100, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 10012, "nome": "MICHAEL", "dia": 5, "valor": 780, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 10013, "nome": "RETIRADA (1)", "dia": null, "valor": 3500, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 10014, "nome": "ALUGUEL STUDIO B SALA 181/182", "dia": 5, "valor": 0, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 10015, "nome": "ENEL STUDIO A - SALA 154", "dia": 5, "valor": 555, "status": "PENDENTE", "obs": "PEGAR COM A GABI SEGUNDA VIA", "cod": "enel gabriella.wencriacoes@gmail.com - senha Eutuv610@", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 10016, "nome": "CHEIRO BOM", "dia": 10, "valor": 182, "status": "PENDENTE", "obs": "NO EMAIL WEN PRODUTORA", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 10017, "nome": "VIVO STUDIO A (CPF GABI)", "dia": 10, "valor": 153.64, "status": "PENDENTE", "obs": "NO EMAIL WEN PRODUTORA", "cod": "cód. cliente 00000167684640 (100291)", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 10018, "nome": "ENEL STUDIO B", "dia": 10, "valor": 719, "status": "PENDENTE", "obs": "PEGAR COM A GABI SEGUNDA VIA", "cod": "enel gabriella.wencriacoes@gmail.com - senha Eutuv610@", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 10019, "nome": "RETIRADA (2)", "dia": null, "valor": 11000, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 10020, "nome": "CARTÃO INTER EMPRESA", "dia": 12, "valor": 1420, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 10021, "nome": "CARTÃO CAIXA", "dia": 15, "valor": 7275, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 10022, "nome": "VIVO STUDIO B (CNPJ)", "dia": 15, "valor": 136, "status": "PENDENTE", "obs": "", "cod": "899926704552 - LOGIN VIVO senha Wiab5022@", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 10023, "nome": "INSS GABRIELLA", "dia": 19, "valor": 166.7, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 10024, "nome": "DAS IMPOSTO", "dia": 20, "valor": 1369, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 10025, "nome": "INVESTIMENTO STUDIO", "dia": 20, "valor": 0, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 10026, "nome": "MUNDIVOX 154", "dia": 25, "valor": 561, "status": "PENDENTE", "obs": "NO EMAIL WEN PRODUTORA", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 10027, "nome": "MUNDIVOX 123", "dia": 25, "valor": 561, "status": "PENDENTE", "obs": "NO EMAIL WEN PRODUTORA", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 10028, "nome": "ONIX CONTADORA", "dia": 25, "valor": 410, "status": "PENDENTE", "obs": "PEGAR NO EMAIL WEN PRODUTORA", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 10029, "nome": "BUSCA CLIENTE", "dia": 25, "valor": 788, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 10030, "nome": "CLARO WILL", "dia": 25, "valor": 110, "status": "PENDENTE", "obs": "PEGAR NO APP BOLETO", "cod": "senha wen140909", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 10031, "nome": "CARTÃO WILL - STUDIO (ALMOÇO/UBER/GOOGLE)", "dia": 27, "valor": 5115, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 10032, "nome": "PARCELAMENTO IMPOSTO", "dia": 30, "valor": 336.31, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}], "JAN/2027": [{"id": 11001, "nome": "ESCOLA SOPHIA", "dia": 1, "valor": 0, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 11002, "nome": "ALUGUEL STUDIO A SALA 154", "dia": 5, "valor": 3800, "status": "PENDENTE", "obs": "BERNARDO DORF", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 11003, "nome": "CONDOMINIO STUDIO 181/182", "dia": 5, "valor": 3438.42, "status": "PENDENTE", "obs": "NO EMAIL WEN PRODUTORA Hubert SENHA 037881", "cod": "237933930890011551349320056000005299520000260733", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 11004, "nome": "CONDOMINIO STUDIO 154", "dia": 5, "valor": 1779.43, "status": "PENDENTE", "obs": "NO EMAIL WEN PRODUTORA Hubert SENHA 003943", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 11005, "nome": "ANTONIO BOTELHO", "dia": 5, "valor": 3200, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 11006, "nome": "AJUDA BOTELHO", "dia": 5, "valor": 300, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 11007, "nome": "RAUL DÓRIA", "dia": 5, "valor": 4000, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 11008, "nome": "RAUL AJUDA", "dia": 5, "valor": 500, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 11009, "nome": "TRAFEGO PAGO", "dia": 5, "valor": 1997, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 11010, "nome": "GABRIELLA MARTINS", "dia": 5, "valor": 1500, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 11011, "nome": "ENRICO", "dia": 5, "valor": 2100, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 11012, "nome": "MICHAEL", "dia": 5, "valor": 780, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 11013, "nome": "RETIRADA (1)", "dia": null, "valor": 3500, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 11014, "nome": "ALUGUEL STUDIO B SALA 181/182", "dia": 5, "valor": 0, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 11015, "nome": "ENEL STUDIO A - SALA 154", "dia": 5, "valor": 555, "status": "PENDENTE", "obs": "PEGAR COM A GABI SEGUNDA VIA", "cod": "enel gabriella.wencriacoes@gmail.com - senha Eutuv610@", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 11016, "nome": "CHEIRO BOM", "dia": 10, "valor": 182, "status": "PENDENTE", "obs": "NO EMAIL WEN PRODUTORA", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 11017, "nome": "VIVO STUDIO A (CPF GABI)", "dia": 10, "valor": 153.64, "status": "PENDENTE", "obs": "NO EMAIL WEN PRODUTORA", "cod": "cód. cliente 00000167684640 (100291)", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 11018, "nome": "ENEL STUDIO B", "dia": 10, "valor": 719, "status": "PENDENTE", "obs": "PEGAR COM A GABI SEGUNDA VIA", "cod": "enel gabriella.wencriacoes@gmail.com - senha Eutuv610@", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 11019, "nome": "RETIRADA (2)", "dia": null, "valor": 11000, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 11020, "nome": "CARTÃO INTER EMPRESA", "dia": 12, "valor": 1420, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 11021, "nome": "CARTÃO CAIXA", "dia": 15, "valor": 7275, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 11022, "nome": "VIVO STUDIO B (CNPJ)", "dia": 15, "valor": 136, "status": "PENDENTE", "obs": "", "cod": "899926704552 - LOGIN VIVO senha Wiab5022@", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 11023, "nome": "INSS GABRIELLA", "dia": 19, "valor": 166.7, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 11024, "nome": "DAS IMPOSTO", "dia": 20, "valor": 1369, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 11025, "nome": "INVESTIMENTO STUDIO", "dia": 20, "valor": 0, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 11026, "nome": "MUNDIVOX 154", "dia": 25, "valor": 561, "status": "PENDENTE", "obs": "NO EMAIL WEN PRODUTORA", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 11027, "nome": "MUNDIVOX 123", "dia": 25, "valor": 561, "status": "PENDENTE", "obs": "NO EMAIL WEN PRODUTORA", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 11028, "nome": "ONIX CONTADORA", "dia": 25, "valor": 410, "status": "PENDENTE", "obs": "PEGAR NO EMAIL WEN PRODUTORA", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 11029, "nome": "BUSCA CLIENTE", "dia": 25, "valor": 788, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 11030, "nome": "CLARO WILL", "dia": 25, "valor": 110, "status": "PENDENTE", "obs": "PEGAR NO APP BOLETO", "cod": "senha wen140909", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 11031, "nome": "CARTÃO WILL - STUDIO (ALMOÇO/UBER/GOOGLE)", "dia": 27, "valor": 5115, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}, {"id": 11032, "nome": "PARCELAMENTO IMPOSTO", "dia": 30, "valor": 336.31, "status": "PENDENTE", "obs": "", "cod": "", "fixa": false, "categoria": "", "valorPago": 0}]};
+  meses={};
+  const ma=mesAtualReal();
+  meses[ma]=[];
   salvarStorage();
 }
+
 // Migração: garantir campos em registros antigos + normalizar IDs float
 Object.keys(meses).forEach(m=>{meses[m].forEach(r=>{
   if(r.valorPago===undefined)r.valorPago=r.status==='PAGO'?r.valor:0;
   if(r.fixa===undefined)r.fixa=false;
   if(r.categoria===undefined)r.categoria='';
-  // Normalizar ID float → string limpa (bug: Date.now()+Math.random() gera float)
   if(typeof r.id==='number')r.id='w'+Math.round(r.id);
   else if(typeof r.id==='string'&&r.id.includes('.'))r.id='w'+r.id.replace('.','x');
 });});
@@ -698,6 +796,7 @@ let filtroAtual='TODOS',editandoId=null,editandoMes=null,pieObj=null,barObj=null
 let pendingEdit=null;
 let periodoMode='dias';
 let lastPeriodoData=[];
+
 // ===== CATEGORIAS CONFIG =====
 const CATS={
   consumo:  {label:'Consumo',   icon:'⚡', color:'#f59e0b', bg:'#fef3c7'},
@@ -716,11 +815,6 @@ function catBadge(c){if(!c)return '';const ci=catInfo(c);return `<span class="ba
 
 let catChartObj=null;
 let baixaId=null;
-
-// ===== FIREBASE FIRESTORE SYNC =====
-const FB_PROJECT = 'wencontasapagar';
-const FB_API_KEY = 'AIzaSyC7hYN3__Q_4MNAu6VCTXbTdvVSW37IneI';
-const FIRESTORE_URL = `https://firestore.googleapis.com/v1/projects/${FB_PROJECT}/databases/(default)/documents`;
 
 let syncTimeout = null;
 let syncStatus = 'idle';
@@ -794,7 +888,6 @@ async function syncToSheets(){
       });
     });
     await Promise.all(promises);
-    // Atualiza o caderninho junto com o sync
     await atualizarCaderninho();
     setSyncStatus('ok');
   } catch(e){
@@ -862,7 +955,8 @@ async function sincronizarAgora(){
     toast('✅ Dados enviados ao Firebase!');
   }
 }
-// Ordenação cronológica correta dos meses (FEV/2026, MAR/2026...)
+
+// Ordenação cronológica correta dos meses
 const MESES_IDX = {JAN:0,FEV:1,MAR:2,ABR:3,MAI:4,JUN:5,JUL:6,AGO:7,SET:8,OUT:9,NOV:10,DEZ:11};
 function sortMeses(keys){
   return [...keys].sort((a,b)=>{
@@ -876,16 +970,55 @@ function getMesesOrdenados(){ return sortMeses(Object.keys(meses)); }
 function getData(){return meses[mesAtual]||[];}
 const fmt=v=>'R$ '+Number(v||0).toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2});
 function getDia(){return new Date().getDate();}
-function getStatusInfo(r){
+function getStatusInfo(r, mes){
   const s=r.status?.toUpperCase(),hoje=getDia();
   if(s==='PAGO')return{label:'✅ PAGO',cls:'pago'};
   const saldo=r.valor-(r.valorPago||0);
   if(saldo>0&&saldo<r.valor)return{label:'💰 PARCIAL',cls:'parcial'};
-  if(r.dia&&r.dia<hoje)return{label:'🔴 VENCIDO',cls:'vencido'};
-  if(r.dia&&r.dia-hoje<=3)return{label:'⚠️ URGENTE',cls:'urgente'};
+  if(isContaVencida(r, mes||mesAtual))return{label:'🔴 VENCIDO',cls:'vencido'};
+  if(r.dia&&r.dia-hoje<=3&&r.dia>=hoje)return{label:'⚠️ URGENTE',cls:'urgente'};
   return{label:'🟡 PENDENTE',cls:'pendente'};
 }
+
+// Retorna true apenas se a conta está realmente vencida considerando o mês
+// - Meses passados: qualquer pendente é vencido
+// - Mês atual: só se o dia já passou
+// - Meses futuros: nunca vencido
+function isContaVencida(r, mes){
+  if(r.status?.toUpperCase()==='PAGO') return false;
+  if(!r.dia) return false;
+  const hoje = getDia();
+  const mesesOrdenados = getMesesOrdenados();
+  const idxMes = mesesOrdenados.indexOf(mes);
+  const idxAtual = mesesOrdenados.indexOf(mesAtual);
+  if(idxMes < idxAtual) return true;       // mês passado: vencido
+  if(idxMes === idxAtual) return r.dia < hoje; // mês atual: só se dia passou
+  return false;                              // mês futuro: nunca vencido
+}
 function toast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2800);}
+
+// ===== SORT STATE =====
+let sortCol=null, sortDir=1; // 1=asc, -1=desc
+
+function imprimirMes(){
+  document.getElementById('printSubtitle').textContent=mesAtual+' — Gerado em '+new Date().toLocaleDateString('pt-BR');
+  window.print();
+}
+
+function limparFiltrosExtras(){
+  document.getElementById('filtroMin').value='';
+  document.getElementById('filtroMax').value='';
+  document.getElementById('catFiltroTabela').value='';
+  renderTabela();
+}
+
+function popularCatFiltroTabela(){
+  const sel=document.getElementById('catFiltroTabela');
+  if(!sel)return;
+  const cats=[...new Set(Object.values(meses).flat().filter(r=>r.categoria).map(r=>r.categoria))].sort();
+  sel.innerHTML='<option value="">🏷️ Todas categorias</option>';
+  cats.forEach(c=>{const ci=catInfo(c);const o=document.createElement('option');o.value=c;o.textContent=ci.icon+' '+ci.label;sel.appendChild(o);});
+}
 
 // ===== PROPAGAÇÃO =====
 function getMesesFuturos(){
@@ -897,7 +1030,6 @@ function getMesesPassados(){
   return keys.filter(m=>m<mesAtual);
 }
 
-// ===== PROPAGAÇÃO =====
 function selecionarPropOpcao(el){
   document.querySelectorAll('.prop-opcao').forEach(x=>x.classList.remove('selected'));
   el.classList.add('selected');
@@ -967,7 +1099,6 @@ function confirmarExcluir(){
     });
     toast('🗑️ Removida deste mês e dos próximos!');
   } else {
-    // Todos os meses — remove por nome em TODOS (passados e futuros)
     Object.keys(meses).forEach(ms=>{
       meses[ms]=(meses[ms]||[]).filter(r=>r.nome!==nome);
     });
@@ -989,9 +1120,7 @@ function showPage(p,btn){
   if(p==='categorias'){renderCatMesFiltro();renderCategorias();}
 }
 
-function renderMesSelect(){
-  atualizarNavMes();
-}
+function renderMesSelect(){ atualizarNavMes(); }
 function atualizarNavMes(){
   const keys=getMesesOrdenados();
   const idx=keys.indexOf(mesAtual);
@@ -1060,10 +1189,8 @@ function calcPeriodoDatas(){
   const fim=document.getElementById('pDataFim').value;
   if(!ini||!fim){toast('⚠️ Informe as datas!');return;}
   const dIni=new Date(ini);const dFim=new Date(fim);
-  // Collect from all months in range
   const allItems=[];
   getMesesOrdenados().forEach(m=>{
-    // Parse month from label e.g. FEV/2026
     const [ms,yr]=m.split('/');
     const mIdx=["JAN","FEV","MAR","ABR","MAI","JUN","JUL","AGO","SET","OUT","NOV","DEZ"].indexOf(ms);
     if(mIdx===-1)return;
@@ -1151,7 +1278,6 @@ function baixarTodosPeriodo(){
   }
   salvarStorage();renderDashboard();
   toast(`✅ ${count} conta(s) baixada(s)!`);
-  // Atualizar visual
   document.querySelectorAll('[id^=pi-]').forEach(el=>{
     const btn=el.querySelector('.btn-baixar');
     if(btn){btn.textContent='✅ Pago';btn.classList.add('pago');}
@@ -1210,7 +1336,6 @@ function confirmarBaixa(){
     if(obs)r.obs=(r.obs?r.obs+' | ':'')+obs;
   }
   salvarStorage();renderDashboard();renderTabela();
-  // Atualizar item no período se aberto
   const piEl=document.getElementById('pi-'+baixaId.id);
   if(piEl){
     const btn=piEl.querySelector('.btn-baixar');
@@ -1227,7 +1352,6 @@ function renderDashboard(){
   const pago=data.filter(r=>r.status.toUpperCase()==='PAGO').reduce((a,r)=>a+r.valor,0);
   const pendente=total-pago;
   const vencendo=data.filter(r=>r.status.toUpperCase()!=='PAGO'&&r.dia&&r.dia-hoje<=3&&r.dia>=hoje).length;
-  const vencido=data.filter(r=>r.status.toUpperCase()!=='PAGO'&&r.dia&&r.dia<hoje).length;
   const qtdPago=data.filter(r=>r.status.toUpperCase()==='PAGO').length;
   const qtdAtrasado=data.filter(r=>r.status.toUpperCase()!=='PAGO'&&r.dia&&r.dia<hoje).length;
 
@@ -1242,9 +1366,41 @@ function renderDashboard(){
   const anoAtual=mesAtual.split('/')[1]||new Date().getFullYear().toString();
   const mesesAno=Object.keys(meses).filter(m=>m.endsWith('/'+anoAtual));
   const totalAno=mesesAno.reduce((a,m)=>a+meses[m].reduce((s,r)=>s+r.valor,0),0);
-  const pagoAno=mesesAno.reduce((a,m)=>a+meses[m].filter(r=>r.status.toUpperCase()==='PAGO').reduce((s,r)=>s+r.valor,0),0);
-  const atrasadoAnoQtd=mesesAno.reduce((a,m)=>a+meses[m].filter(r=>r.status.toUpperCase()!=='PAGO'&&r.dia&&r.dia<hoje&&m<=mesAtual).length,0);
-  const atrasadoAnoVal=mesesAno.reduce((a,m)=>a+meses[m].filter(r=>r.status.toUpperCase()!=='PAGO'&&r.dia&&r.dia<hoje&&m<=mesAtual).reduce((s,r)=>s+(r.valor-(r.valorPago||0)),0),0);
+  const pagoAno=mesesAno.reduce((a,m)=>a+meses[m].filter(r=>r.status.toUpperCase()==='PAGO').reduce((a,r)=>a+r.valor,0),0);
+
+  // =====================================================================
+  // CORREÇÃO: Contas atrasadas no ano
+  // - Meses PASSADOS: qualquer conta pendente é atrasada
+  // - Mês ATUAL: só é atrasada se o dia de vencimento já passou
+  // - Meses FUTUROS: nunca contam como atrasadas
+  // =====================================================================
+  const mesesIdxOrdenados = getMesesOrdenados();
+  const idxMesAtual = mesesIdxOrdenados.indexOf(mesAtual);
+
+  const atrasadoAnoQtd = mesesAno.reduce((a, m) => {
+    const idxM = mesesIdxOrdenados.indexOf(m);
+    const isPassado = idxM < idxMesAtual;
+    const isAtual = m === mesAtual;
+    return a + meses[m].filter(r => {
+      if (r.status.toUpperCase() === 'PAGO') return false;
+      if (isPassado) return true;           // mês passado: todo pendente é atrasado
+      if (isAtual) return r.dia && r.dia < hoje; // mês atual: só se o dia já passou
+      return false;                          // mês futuro: nunca atrasado
+    }).length;
+  }, 0);
+
+  const atrasadoAnoVal = mesesAno.reduce((a, m) => {
+    const idxM = mesesIdxOrdenados.indexOf(m);
+    const isPassado = idxM < idxMesAtual;
+    const isAtual = m === mesAtual;
+    return a + meses[m].filter(r => {
+      if (r.status.toUpperCase() === 'PAGO') return false;
+      if (isPassado) return true;
+      if (isAtual) return r.dia && r.dia < hoje;
+      return false;
+    }).reduce((s, r) => s + (r.valor - (r.valorPago || 0)), 0);
+  }, 0);
+  // =====================================================================
 
   document.getElementById('cardsRow2').innerHTML=`
     <div class="card qtd-pago">
@@ -1307,8 +1463,131 @@ function renderDashboard(){
   if(barObj)barObj.destroy();
   barObj=new Chart(document.getElementById('barChart'),{type:'bar',data:{labels:dias.map(d=>'Dia '+d),datasets:[{label:'Total',data:dias.map(d=>data.filter(r=>r.dia===d).reduce((a,r)=>a+r.valor,0)),backgroundColor:'#3b82f6',borderRadius:6}]},options:{plugins:{legend:{display:false}},scales:{y:{ticks:{callback:v=>'R$'+Math.round(v/1000)+'k'}}}}});
 
-  // Gráfico comparativo mês a mês
   renderComparativo();
+  renderCalendario();
+  renderSemanas();
+  renderResumoExecutivo();
+}
+
+// ===== CALENDÁRIO =====
+function renderCalendario(){
+  const data=getData(), hoje=getDia();
+  const [mesNome, ano] = mesAtual.split('/');
+  const mesesNomes=['JAN','FEV','MAR','ABR','MAI','JUN','JUL','AGO','SET','OUT','NOV','DEZ'];
+  const mesIdx=mesesNomes.indexOf(mesNome);
+  if(mesIdx<0){document.getElementById('calGrid').innerHTML='';return;}
+  const anoNum=parseInt('20'+ano.slice(-2));
+  const primeiroDia=new Date(anoNum,mesIdx,1).getDay(); // 0=dom
+  const diasNoMes=new Date(anoNum,mesIdx+1,0).getDate();
+
+  // agrupa contas por dia
+  const porDia={};
+  data.forEach(r=>{if(r.dia){if(!porDia[r.dia])porDia[r.dia]=[];porDia[r.dia].push(r);}});
+
+  const diasSemana=['Dom','Seg','Ter','Qua','Qui','Sex','Sáb'];
+  let html=`<div class="cal-header">${diasSemana.map(d=>`<span>${d}</span>`).join('')}</div><div class="cal-grid">`;
+
+  // células vazias antes do dia 1
+  for(let i=0;i<primeiroDia;i++) html+=`<div class="cal-day empty"></div>`;
+
+  for(let d=1;d<=diasNoMes;d++){
+    const contas=porDia[d]||[];
+    const hasContas=contas.length>0;
+    const temVencido=contas.some(r=>isContaVencida(r,mesAtual));
+    const todoPago=hasContas&&contas.every(r=>r.status.toUpperCase()==='PAGO');
+    const isToday=d===hoje&&mesAtual===mesAtualReal();
+    const total=contas.reduce((a,r)=>a+r.valor,0);
+
+    let cls='cal-day';
+    if(temVencido) cls+=' has-vencido';
+    else if(todoPago) cls+=' all-pago';
+    else if(hasContas) cls+=' has-contas';
+    if(isToday) cls+=' today';
+
+    const dots=contas.slice(0,6).map(r=>{
+      const st=getStatusInfo(r,mesAtual);
+      const col=st.cls==='pago'?'#22c55e':st.cls==='vencido'?'#ef4444':st.cls==='urgente'?'#f97316':'#f59e0b';
+      return `<span class="cal-dot" style="background:${col}" title="${r.nome}"></span>`;
+    }).join('');
+
+    html+=`<div class="${cls}" onclick="${hasContas?`mostrarDiaDetalhe(${d})`:''}">
+      <div class="cal-day-num">${d}</div>
+      ${dots?`<div class="cal-dots">${dots}</div>`:''}
+      ${hasContas?`<div class="cal-day-val">${fmt(total).replace('R$ ','R$')}</div>`:''}
+    </div>`;
+  }
+  html+='</div>';
+  document.getElementById('calGrid').innerHTML=html;
+}
+
+function mostrarDiaDetalhe(dia){
+  const data=getData().filter(r=>r.dia===dia);
+  if(!data.length)return;
+  const nomes=data.map(r=>{const st=getStatusInfo(r,mesAtual);return `• ${r.nome} — ${fmt(r.valor)} [${st.label}]`;}).join('\n');
+  const total=data.reduce((a,r)=>a+r.valor,0);
+  alert(`📅 Dia ${dia} — ${mesAtual}\n\n${nomes}\n\nTotal: ${fmt(total)}`);
+}
+
+// ===== SEMANAS =====
+function renderSemanas(){
+  const data=getData();
+  const hoje=getDia();
+  const semanas=[
+    {label:'Semana 1',ini:1,fim:7},
+    {label:'Semana 2',ini:8,fim:14},
+    {label:'Semana 3',ini:15,fim:21},
+    {label:'Semana 4+',ini:22,fim:31},
+  ];
+  const html=semanas.map(s=>{
+    const contas=data.filter(r=>r.dia&&r.dia>=s.ini&&r.dia<=s.fim);
+    if(!contas.length)return '';
+    const total=contas.reduce((a,r)=>a+r.valor,0);
+    const pago=contas.filter(r=>r.status.toUpperCase()==='PAGO').reduce((a,r)=>a+r.valor,0);
+    const pendente=total-pago;
+    const qtd=contas.length;
+    return `<div class="semana-card">
+      <label>${s.label} (dia ${s.ini}–${s.fim})</label>
+      <div class="sw-val">${fmt(total)}</div>
+      <div class="sw-sub">✅ ${fmt(pago)} pago · 🔴 ${fmt(pendente)} pendente · ${qtd} conta(s)</div>
+    </div>`;
+  }).join('');
+  document.getElementById('semanaGrid').innerHTML=html;
+}
+
+// ===== RESUMO EXECUTIVO =====
+function renderResumoExecutivo(){
+  const data=getData(), hoje=getDia();
+  const total=data.reduce((a,r)=>a+r.valor,0);
+  const pago=data.filter(r=>r.status.toUpperCase()==='PAGO').reduce((a,r)=>a+r.valor,0);
+  const pendente=total-pago;
+  const vencidas=data.filter(r=>isContaVencida(r,mesAtual)).length;
+
+  // tendência vs mês anterior
+  const mesesOrd=getMesesOrdenados();
+  const idxAtual=mesesOrd.indexOf(mesAtual);
+  let tendencia='';
+  if(idxAtual>0){
+    const mesAnt=mesesOrd[idxAtual-1];
+    const totalAnt=(meses[mesAnt]||[]).reduce((a,r)=>a+r.valor,0);
+    if(totalAnt>0){
+      const diff=total-totalAnt;
+      const pct=Math.abs(Math.round(diff/totalAnt*100));
+      tendencia=diff>0?`📈 +${pct}% vs ${mesAnt}`:diff<0?`📉 −${pct}% vs ${mesAnt}`:`= igual a ${mesAnt}`;
+    }
+  }
+
+  document.getElementById('resumoExecDiv').innerHTML=`
+    <div class="resumo-exec">
+      <h3>📋 Resumo Executivo — ${mesAtual}</h3>
+      <div class="resumo-exec-grid">
+        <div class="resumo-exec-item"><label>Total do Mês</label><div class="rev">${fmt(total)}</div></div>
+        <div class="resumo-exec-item"><label>✅ Pago</label><div class="rev">${fmt(pago)}</div></div>
+        <div class="resumo-exec-item"><label>🔴 A Pagar</label><div class="rev">${fmt(pendente)}</div></div>
+        <div class="resumo-exec-item"><label>Contas Vencidas</label><div class="rev">${vencidas}</div></div>
+        ${tendencia?`<div class="resumo-exec-item"><label>Tendência</label><div class="rev" style="font-size:.9rem">${tendencia}</div></div>`:''}
+        <div class="resumo-exec-item"><label>% Quitado</label><div class="rev">${total>0?Math.round(pago/total*100):0}%</div></div>
+      </div>
+    </div>`;
 }
 
 function renderComparativo(){
@@ -1351,15 +1630,12 @@ function setFiltro(f,btn){
   const banner=document.getElementById('vencidoBanner');
 
   if(f==='VENCIDO'){
-    // Mostrar seletor de mês e banner
     btn.classList.add('vencido-active');
     selMes.style.display='block';
-    // Popular seletor com meses que têm vencidos
     const hoje=getDia();
-    const mesAtualIdx=getMesesOrdenados().indexOf(mesAtual);
     selMes.innerHTML='<option value="TODOS_MESES">📅 Todos os meses</option>';
     getMesesOrdenados().forEach(m=>{
-      const temVencido=meses[m].some(r=>r.status.toUpperCase()!=='PAGO'&&r.dia&&r.dia<hoje);
+      const temVencido=meses[m].some(r=>isContaVencida(r, m));
       if(temVencido){
         const o=document.createElement('option');
         o.value=m;o.textContent=m;
@@ -1379,18 +1655,20 @@ function renderTabela(){
   const selMes=document.getElementById('mesFiltroContas');
   const mesFiltro=selMes?.value||'';
   const banner=document.getElementById('vencidoBanner');
+  const catFiltro=document.getElementById('catFiltroTabela')?.value||'';
+  const filtroMin=parseFloat(document.getElementById('filtroMin')?.value)||0;
+  const filtroMax=parseFloat(document.getElementById('filtroMax')?.value)||Infinity;
 
   let data=[];
 
   if(filtroAtual==='VENCIDO'){
-    // Busca em todos os meses ou no mês filtrado
     const mesesBuscar=mesFiltro&&mesFiltro!=='TODOS_MESES'
       ?[mesFiltro]
       :getMesesOrdenados();
 
     mesesBuscar.forEach(m=>{
       (meses[m]||[]).forEach(r=>{
-        if(r.status.toUpperCase()!=='PAGO'&&r.dia&&r.dia<hoje){
+        if(isContaVencida(r, m)){
           if(!busca||r.nome.toLowerCase().includes(busca)){
             data.push({...r,_mes:m});
           }
@@ -1398,11 +1676,9 @@ function renderTabela(){
       });
     });
 
-    // Ordenar: mês mais antigo primeiro, depois por dia
     const mIdxMap={};getMesesOrdenados().forEach((m,i)=>mIdxMap[m]=i);
     data.sort((a,b)=>mIdxMap[a._mes]-mIdxMap[b._mes]||a.dia-b.dia);
 
-    // Banner
     const mesesComVencidos=[...new Set(data.map(r=>r._mes))];
     if(mesFiltro==='TODOS_MESES'||!mesFiltro){
       document.getElementById('vencidoContagem').textContent=
@@ -1424,14 +1700,60 @@ function renderTabela(){
     data.sort((a,b)=>(a.dia||99)-(b.dia||99));
   }
 
+  // Filtros extras
+  if(catFiltro) data=data.filter(r=>(r.categoria||'outros')===catFiltro||(catFiltro==='outros'&&!r.categoria));
+  if(filtroMin>0) data=data.filter(r=>r.valor>=filtroMin);
+  if(filtroMax<Infinity) data=data.filter(r=>r.valor<=filtroMax);
+
+  // Ordenação por coluna
+  if(sortCol){
+    data.sort((a,b)=>{
+      let va,vb;
+      if(sortCol==='nome'){va=a.nome||'';vb=b.nome||'';}
+      else if(sortCol==='valor'){va=a.valor;vb=b.valor;}
+      else if(sortCol==='dia'){va=a.dia||99;vb=b.dia||99;}
+      else if(sortCol==='saldo'){va=a.valor-(a.valorPago||0);vb=b.valor-(b.valorPago||0);}
+      if(typeof va==='string') return sortDir*va.localeCompare(vb);
+      return sortDir*(va-vb);
+    });
+  }
+
+  // Cabeçalho com colunas clicáveis
+  const thSort=(col,label)=>{
+    const isActive=sortCol===col;
+    const dir=isActive?(sortDir===1?'sort-asc':'sort-desc'):'';
+    return `<th class="sortable ${dir}" onclick="setSort('${col}')" style="text-align:${col==='valor'||col==='saldo'?'right':'left'}">${label}</th>`;
+  };
+
   let rows='',lastDiaKey='';
   data.forEach(r=>{
-    const st=getStatusInfo(r);
+    const mesR=r._mes||mesAtual;
+    const st=getStatusInfo(r, mesR);
     const isPago=r.status.toUpperCase()==='PAGO';
     const saldo=r.valor-(r.valorPago||0);
-    const mesR=r._mes||mesAtual;
 
-    // Agrupador — no modo vencido agrupa por Mês+Dia, nos outros só por Dia
+    // Dias em atraso
+    let diasAtrasoHtml='';
+    if(isContaVencida(r,mesR)&&r.dia){
+      const mesesOrd=getMesesOrdenados();
+      const idxM=mesesOrd.indexOf(mesR);
+      const idxAtual=mesesOrd.indexOf(mesAtual);
+      let diasAtraso=0;
+      if(idxM<idxAtual){
+        // meses passados: calcular dias desde o vencimento
+        const mesesNomes=['JAN','FEV','MAR','ABR','MAI','JUN','JUL','AGO','SET','OUT','NOV','DEZ'];
+        const [mn,ay]=mesR.split('/');const [ma,aa]=mesAtual.split('/');
+        const miIdx=mesesNomes.indexOf(mn);const maIdx=mesesNomes.indexOf(ma);
+        const anoR=parseInt('20'+ay.slice(-2));const anoA=parseInt('20'+aa.slice(-2));
+        const dtVenc=new Date(anoR,miIdx,r.dia);
+        const dtHoje=new Date(anoA,maIdx,hoje);
+        diasAtraso=Math.floor((dtHoje-dtVenc)/(1000*60*60*24));
+      } else {
+        diasAtraso=hoje-r.dia;
+      }
+      if(diasAtraso>0) diasAtrasoHtml=`<span class="dias-atraso">${diasAtraso}d atraso</span>`;
+    }
+
     const diaKey=filtroAtual==='VENCIDO'?`${mesR}_${r.dia}`:`${r.dia}`;
 
     if(diaKey!==lastDiaKey){
@@ -1455,8 +1777,13 @@ function renderTabela(){
       </td></tr>`;
     }
 
-    rows+=`<tr class="${r.valor===0?'zerado':''}">
-      <td class="nome-cell">${r.nome}${r.fixa?` <span class="badge fixa">📌 Fixa</span>`:''}${r.categoria?` ${catBadge(r.categoria)}`:''}${filtroAtual==='VENCIDO'&&r._mes?` <span style="font-size:.72rem;background:#fee2e2;color:#b91c1c;padding:1px 6px;border-radius:4px;font-weight:600">${r._mes}</span>`:''}${r.obs?`<div class="obs-cell">📝 ${r.obs}</div>`:''}${r.cod&&r.cod!=='-'?`<div class="obs-cell">🔢 <span style="font-family:monospace;font-size:.75rem">${r.cod}</span></div>`:''}</td>
+    // Tooltip para código de barras
+    const codHtml=r.cod&&r.cod!=='-'
+      ?`<div class="obs-cell"><span class="tooltip-wrap">🔢 <span style="font-family:monospace;font-size:.75rem;cursor:help;border-bottom:1px dashed #9ca3af">${r.cod.length>20?r.cod.slice(0,20)+'…':r.cod}</span><span class="tooltip-cod">${r.cod}</span></span></div>`
+      :'';
+
+    rows+=`<tr class="${r.valor===0?'zerado':''}" style="${isContaVencida(r,mesR)?'background:#fff8f8':''}">
+      <td class="nome-cell">${r.nome}${r.fixa?` <span class="badge fixa">📌 Fixa</span>`:''}${r.categoria?` ${catBadge(r.categoria)}`:''}${filtroAtual==='VENCIDO'&&r._mes?` <span style="font-size:.72rem;background:#fee2e2;color:#b91c1c;padding:1px 6px;border-radius:4px;font-weight:600">${r._mes}</span>`:''}${diasAtrasoHtml}${r.obs?`<div class="obs-cell">📝 ${r.obs}</div>`:''}${codHtml}</td>
       <td class="center">${r.dia?'Dia '+r.dia:'—'}</td>
       <td class="right">${fmt(r.valor)}</td>
       <td class="right" style="color:${saldo>0?'#b91c1c':'#15803d'}">${fmt(saldo)}</td>
@@ -1470,10 +1797,26 @@ function renderTabela(){
   if(!rows)rows=`<tr><td colspan="8" class="empty">${filtroAtual==='VENCIDO'?'✅ Nenhuma conta vencida encontrada!':'Nenhuma conta encontrada.'}</td></tr>`;
   const total=data.reduce((a,r)=>a+r.valor,0);
   const totalSaldo=data.reduce((a,r)=>a+(r.valor-(r.valorPago||0)),0);
-  document.getElementById('tabelaDiv').innerHTML=`<table><thead><tr><th>Descrição</th><th style="text-align:center">Vencimento</th><th style="text-align:right">Valor</th><th style="text-align:right">Saldo</th><th style="text-align:center">Status</th><th style="text-align:center">Baixa</th><th style="text-align:center">Ações</th></tr></thead><tbody>${rows}</tbody><tfoot><tr><td colspan="2">TOTAL (${data.length} conta(s)${filtroAtual==='VENCIDO'?' vencida(s)':''})</td><td style="text-align:right">${fmt(total)}</td><td style="text-align:right">${fmt(totalSaldo)}</td><td colspan="3"></td></tr></tfoot></table>`;
+  document.getElementById('tabelaDiv').innerHTML=`<table>
+    <thead><tr>
+      ${thSort('nome','Descrição')}
+      ${thSort('dia','Vencimento')}
+      ${thSort('valor','Valor')}
+      ${thSort('saldo','Saldo')}
+      <th style="text-align:center">Status</th>
+      <th style="text-align:center">Baixa</th>
+      <th style="text-align:center">Ações</th>
+    </tr></thead>
+    <tbody>${rows}</tbody>
+    <tfoot><tr><td colspan="2">TOTAL (${data.length} conta(s)${filtroAtual==='VENCIDO'?' vencida(s)':''})</td><td style="text-align:right">${fmt(total)}</td><td style="text-align:right">${fmt(totalSaldo)}</td><td colspan="3"></td></tr></tfoot>
+  </table>`;
 }
 
-// Funções com contexto de mês explícito
+function setSort(col){
+  if(sortCol===col){sortDir*=-1;}else{sortCol=col;sortDir=1;}
+  renderTabela();
+}
+
 function abrirBaixaCtx(id,mes){
   const m=mes||mesAtual;
   const r=(meses[m]||[]).find(x=>String(x.id)===String(id));
@@ -1485,7 +1828,6 @@ function editarContaCtx(id,mes){
   const m=mes||mesAtual;
   const r=(meses[m]||[]).find(x=>String(x.id)===String(id));
   if(!r)return;
-  // Salva o mês real e muda temporariamente para o modal encontrar o registro
   const prev=mesAtual;
   mesAtual=m;
   editandoMes=m;
@@ -1634,9 +1976,13 @@ function exportarTodosExcel(){
 function renderCatMesFiltro(){
   const sel=document.getElementById('catMesFiltro');
   sel.innerHTML='<option value="TODOS_MESES">📅 Todos os meses</option>';
+  const selComp=document.getElementById('catMesComp');
+  selComp.innerHTML='<option value="">📊 Comparar com mês...</option>';
   getMesesOrdenados().forEach(m=>{
     const o=document.createElement('option');o.value=m;o.textContent=m;
     if(m===mesAtual)o.selected=true;sel.appendChild(o);
+    const o2=document.createElement('option');o2.value=m;o2.textContent=m;
+    selComp.appendChild(o2);
   });
 }
 
@@ -1652,7 +1998,6 @@ function renderCategorias(){
   const data=getCatData();
   const ordem=document.getElementById('catOrdem')?.value||'total';
 
-  // Agrupa por categoria
   const grupos={};
   data.forEach(r=>{
     const cat=r.categoria||'outros';
@@ -1663,7 +2008,6 @@ function renderCategorias(){
     else grupos[cat].pendente+=(r.valor-(r.valorPago||0));
   });
 
-  // Ordena
   let keys=Object.keys(grupos);
   if(ordem==='total')keys.sort((a,b)=>grupos[b].total-grupos[a].total);
   else if(ordem==='nome')keys.sort((a,b)=>catInfo(a).label.localeCompare(catInfo(b).label));
@@ -1671,7 +2015,6 @@ function renderCategorias(){
 
   const totalGeral=data.reduce((a,r)=>a+r.valor,0);
 
-  // Gráfico de pizza por categoria
   if(catChartObj)catChartObj.destroy();
   catChartObj=new Chart(document.getElementById('catChart'),{
     type:'doughnut',
@@ -1682,7 +2025,6 @@ function renderCategorias(){
     options:{plugins:{legend:{position:'right'},tooltip:{callbacks:{label:ctx=>`${ctx.label}: ${fmt(ctx.raw)} (${totalGeral>0?Math.round(ctx.raw/totalGeral*100):0}%)`}}},cutout:'55%'}
   });
 
-  // Cards de categoria
   document.getElementById('catGrid').innerHTML=keys.map(cat=>{
     const g=grupos[cat];const ci=catInfo(cat);
     const pct=g.total>0?Math.round(g.pago/g.total*100):0;
@@ -1707,8 +2049,54 @@ function renderCategorias(){
       </div>
     </div>`;
   }).join('')||'<div class="empty">Nenhuma conta cadastrada.</div>';
-}
 
+  // TOP 5
+  const todasContas=data.slice().sort((a,b)=>b.valor-a.valor).slice(0,5);
+  document.getElementById('top5List').innerHTML=todasContas.length
+    ?todasContas.map((r,i)=>{
+        const cores=['#f59e0b','#94a3b8','#cd7c54','#6366f1','#22c55e'];
+        const isPago=r.status.toUpperCase()==='PAGO';
+        return `<div class="top5-item">
+          <span class="top5-rank" style="color:${cores[i]}">#${i+1}</span>
+          <span class="top5-nome">${r.nome}${r.categoria?` ${catBadge(r.categoria)}`:''}</span>
+          <span class="top5-val" style="color:${isPago?'#15803d':'#b91c1c'}">${fmt(r.valor)}</span>
+        </div>`;
+      }).join('')
+    :'<div style="color:#9ca3af;font-size:.85rem;padding:8px 0">Nenhuma conta</div>';
+
+  // COMPARATIVO DE CATEGORIA
+  const mesComp=document.getElementById('catMesComp')?.value||'';
+  const compWrap=document.getElementById('catCompareWrap');
+  if(mesComp&&mesComp!==mesFiltro&&meses[mesComp]){
+    compWrap.style.display='block';
+    document.getElementById('catCompareTitle').textContent=`📊 Comparativo por Categoria — ${mesFiltro==='TODOS_MESES'?'Todos':mesFiltro} vs ${mesComp}`;
+    const dataComp=meses[mesComp]||[];
+    const gruposComp={};
+    dataComp.forEach(r=>{const cat=r.categoria||'outros';if(!gruposComp[cat])gruposComp[cat]=0;gruposComp[cat]+=r.valor;});
+    const allCats=[...new Set([...Object.keys(grupos),...Object.keys(gruposComp)])];
+    const maxVal=Math.max(...allCats.map(c=>Math.max(grupos[c]?.total||0,gruposComp[c]||0)));
+    document.getElementById('catCompareList').innerHTML=allCats.sort((a,b)=>(grupos[b]?.total||0)-(grupos[a]?.total||0)).map(cat=>{
+      const ci=catInfo(cat);
+      const v1=grupos[cat]?.total||0;
+      const v2=gruposComp[cat]||0;
+      const w1=maxVal>0?Math.round(v1/maxVal*100):0;
+      const w2=maxVal>0?Math.round(v2/maxVal*100):0;
+      const diff=v1-v2;
+      const trend=diff>0?`<span style="color:#ef4444">▲ ${fmt(Math.abs(diff))}</span>`:diff<0?`<span style="color:#22c55e">▼ ${fmt(Math.abs(diff))}</span>`:`<span style="color:#94a3b8">=</span>`;
+      return `<div class="cat-compare-row">
+        <span class="cat-compare-label" style="color:${ci.color}">${ci.icon} ${ci.label}</span>
+        <div class="cat-compare-bar-wrap">
+          <div class="cat-compare-bar" style="width:${w1}%;background:${ci.color};opacity:.85" title="${mesFiltro==='TODOS_MESES'?'Todos':mesFiltro}: ${fmt(v1)}"></div>
+          <div class="cat-compare-bar" style="width:${w2}%;background:${ci.color};opacity:.35" title="${mesComp}: ${fmt(v2)}"></div>
+        </div>
+        <div class="cat-compare-vals">${fmt(v1)} / ${fmt(v2)}</div>
+        <div class="cat-compare-trend">${trend}</div>
+      </div>`;
+    }).join('');
+  } else {
+    compWrap.style.display='none';
+  }
+}
 
 function exportarBackup(){
   const payload={versao:'wen-v3',exportadoEm:new Date().toISOString(),meses};
@@ -1725,7 +2113,6 @@ function importarBackup(event){
   reader.onload=async e=>{
     try{
       const payload=JSON.parse(e.target.result);
-      // Aceita tanto {meses:...} quanto o objeto direto de meses
       const dadosMeses = payload.meses || (payload.wen_meses5 ? payload.wen_meses5 : payload);
       if(!dadosMeses || typeof dadosMeses !== 'object'){toast('❌ Arquivo inválido.');return;}
       const qtd = Object.keys(dadosMeses).length;
@@ -1739,7 +2126,6 @@ function importarBackup(event){
       localStorage.setItem('wen_meses6', JSON.stringify(meses));
       atualizarNavMes();renderDashboard();renderHistorico();
       toast('⏳ Importado localmente. Sincronizando com Firebase...');
-      // Força sync imediato
       await syncToSheets();
       toast('✅ '+qtd+' meses importados e sincronizados com o Firebase!');
     } catch(err){toast('❌ Erro ao importar: '+err.message);}
@@ -1788,6 +2174,7 @@ document.getElementById('copiarMesBg').addEventListener('click',e=>{if(e.target=
 
 renderMesSelect();
 renderDashboard();
+popularCatFiltroTabela();
 
 // Ao abrir: carrega dados do Firebase
 (async () => {
@@ -1795,16 +2182,13 @@ renderDashboard();
   document.getElementById('syncIndicator').textContent = '⏳ Carregando do Firebase...';
   const ok = await carregarDoSheets();
   if(ok){
-    atualizarNavMes(); renderDashboard(); renderTabela();
+    atualizarNavMes(); renderDashboard(); renderTabela(); popularCatFiltroTabela();
     toast('☁️ Dados carregados do Firebase!');
   } else {
     await syncToSheets();
     toast('✅ Dados enviados ao Firebase!');
   }
 })();
-</script>
-</body>
-</html>
 </script>
 </body>
 </html>
